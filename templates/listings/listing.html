@@ -44,8 +44,10 @@
       <div class="row">
         <div class="col-md-9">
           <!-- Home Main Image -->
+        {% if listing.photo_main %}
           <img src="{{ listing.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
           <!-- Thumbnails -->
+        {% endif %}
           <div class="row mb-5 thumbs">
             {% if listing.photo_1 %}
             <div class="col-md-2">
@@ -130,7 +132,7 @@
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-bed"></i> Realtor:
-                  <span class="float-right">{{ listing.realtor }}
+                  <span class="float-right">{{ listing.society.realtor.name }}
                   </span>
                 </li>
 

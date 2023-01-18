@@ -71,64 +71,73 @@
   {% include 'partials/_alerts.html' %}
 
   <!-- Listings -->
-  <section id="listings" class="py-5">
-    <div class="container">
-      <h3 class="text-center mb-3">Latest Listings</h3>
-      <div class="row">
-        {% if listings %}
-          {% for listing in listings %}
-            <!-- Listing 1 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-              <div class="card listing-preview">
-                <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
-                <div class="card-img-overlay">
-                  <h2>
-                    <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
-                  </h2>
+<style>
+ .starter-template {
+            padding: 80px 15px;
+            text-align: center;
+        }
+
+span.lower-text {
+            color: #ffc300;
+            font-size: 25px;
+            display: block;
+        }
+
+        .hover-div {
+            padding: 20px 20px;
+            text-align: center;
+            min-height: 350px;
+        }
+
+        .hover-div {
+            border-top: 1px solid #f8f8f8;
+            background: #f8f8f8;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+            margin: 10px 0px;
+        }
+
+        .hover-div:hover {
+            -webkit-transform: translateY(-20px);
+            -ms-transform: translateY(-20px);
+            transform: translateY(-20px);
+            box-shadow: 0 22px 43px rgba(0, 0, 0, 0.32);
+            cursor: pointer;
+            border-radius: 5px;
+        }
+</style>
+
+<div class="container">
+  <h2 class="text-center text-bold">Societies Details</h2>
+        <div class="starter-template">
+            <div class="row">
+            {% if societys %}
+                {% for society in societys %}
+                    {{ society.id }}
+                <div class="col-sm-4">
+                    <section class="hover-div"> <a href="{{ society.id }}"> <img src="{{ society.photo_main.url }}" width="100">
+                        <div class="hover-div_inner">
+                            <h3><a href="#">{{ society.title }}</a></h3>
+                            <p class="text-center">{{ society.address}}</p>
+                            <div class="hover-div-lower">
+                                <div class="col-xs-6 text-left"><span class="lower-text">{{ society.city }}</span></div>
+                                <div class="col-xs-6 text-right"><span class="lower-text">{{ society.state }}</span></div>
+                            </div>
+                        </div>
+                        </a>
+                    </section>
                 </div>
-                <div class="card-body">
-                  <div class="listing-heading text-center">
-                    <h4 class="text-primary">{{ listing.title }}</h4>
-                    <p>
-                      <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</p>
-                  </div>
-                  <hr>
-                  <div class="row py-2 text-secondary">
-                    <div class="col-6">
-                      <i class="fas fa-th-large"></i> Sqft: {{ listing.sqft }}</div>
-                    <div class="col-6">
-                      <i class="fas fa-car"></i> Garage: {{ listing.garage }}</div>
-                  </div>
-                  <div class="row py-2 text-secondary">
-                    <div class="col-6">
-                      <i class="fas fa-bed"></i> Bedrooms: {{ listing.bedrooms }}</div>
-                    <div class="col-6">
-                      <i class="fas fa-bath"></i> Bathrooms: {{ listing.bathrooms }}</div>
-                  </div>
-                  <hr>
-                  <div class="row py-2 text-secondary">
-                    <div class="col-6">
-                      <i class="fas fa-user"></i> {{ listing.realtor }}</div>
-                  </div>
-                  <div class="row text-secondary pb-2">
-                    <div class="col-6">
-                      <i class="fas fa-clock"></i> {{ listing.list_date | timesince }}</div>
-                  </div>
-                  <hr>
-                  <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        {% else %}
+                {% endfor %}
+                    {% else %}
           <div class="col-md-12">
-            <p>No Listings Available</p>
+            <p>No Society Available</p>
           </div>
         {% endif %}
-
-      </div>
+            </div>
+        </div>
     </div>
-  </section>
+
 
   <section id="services" class="py-5 bg-secondary text-white">
     <div class="container">
@@ -157,4 +166,14 @@
       </div>
     </div>
   </section>
+    <script>
+     $(document).ready(function () {
+            $('.hover-div').hover(function () {
+                $('.hover-div').stop().fadeTo('fast', 0.3);
+                $(this).stop().fadeTo('fast', 1);
+            }, function () {
+                $('.hover-div').stop().fadeTo('fast', 1);
+            });
+        });
+    </script>
 {% endblock %}
