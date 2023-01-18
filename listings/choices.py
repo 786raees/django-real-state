@@ -8,44 +8,32 @@ bedroom_choices = {
   '7':7,
   '8':8,
   '9':9,
-  '10':10
+  '10':10,
+    '11': 11,
+    '12': 12,
+    '13': 13,
+    '14': 14,
+    '15': 15,
+    '16': 16
   }
 
 price_choices = {
-  '100000':'$100,000',
-  '200000':'$200,000',
-  '300000':'$300,000',
-  '400000':'$400,000',
-  '500000':'$500,000',
-  '600000':'$600,000',
-  '700000':'$700,000',
-  '800000':'$800,000',
-  '900000':'$900,000',
-  '1000000':'$1M+',
+  '10000':'PKR10,000',
+    '50000':'PKR50,000',
+  '200000':'PKR200,000',
+  '300000':'PKR300,000',
+  '400000':'PKR400,000',
+  '500000':'PKR500,000',
+  '600000':'PKR600,000',
+  '700000':'PKR700,000',
+  '800000':'PKR800,000',
+  '900000':'PKR900,000',
+  '1000000':'PKR1M+',
 }
 
 state_choices = {
         
-       'AP': 'Andra Pradesh',
-       'HYD' : 'Hyderabad' ,
-       'AP' : 'Arunachal Pradesh',
-       'AS':'Assam',
-       'BH':'Bihar',
-       'P':'Patna',
-       'CHG':'Chhattisgarh',
-       'Rp':'Raipur',
-       'G': 'Goa',
-       'GU':'Gujarat',
-       'H': 'Haryana',
-       'HP': 'Himachal Pradesh',
-       'JAK'  : 'Jammu and Kashmir',
-       'JK': 'Jharkhand',
-       'RCH': 'Ranchi',
-       'KR': 'Karnataka',
-       'KRL' : 'Kerala',
-       'MP' : 'Madya Pradesh',
-       'BP' :  'Bhopal',
-       'MP':'Maharashtra',
-       'OD' :  'Orissa'
+       'PAK': 'Pakistan',
+       'IND' : 'India' ,
        
 }

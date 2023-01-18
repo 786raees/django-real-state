@@ -16,7 +16,7 @@
           <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam
             voluptatum tempore! Consectetur, id commodi!</p>
           <div class="search">
-            <form action="{% url 'search' %}">
+            <form action="{% url 'searchSociety' %}">
               <!-- Form Row 1 -->
               <div class="form-row">
                 <div class="col-md-4 mb-3">
@@ -34,26 +34,6 @@
                   <select name="state" class="form-control">
                     <option selected="true" disabled="disabled">State (All)</option>
                     {% for key,value in state_choices.items %}
-                      <option value="{{ key }}">{{ value }}</option>
-                    {% endfor %}
-                  </select>
-                </div>
-              </div>
-              <!-- Form Row 2 -->
-              <div class="form-row">
-                <div class="col-md-6 mb-3">
-                  <label class="sr-only">Bedrooms</label>
-                  <select name="bedrooms" class="form-control">
-                    <option selected="true" disabled="disabled">Bedrooms (All)</option>
-                    {% for key,value in bedroom_choices.items %}
-                      <option value="{{ key }}">{{ value }}</option>
-                    {% endfor %}
-                  </select>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <select name="price" class="form-control" id="type">
-                    <option selected="true" disabled="disabled">Max Price (Any)</option>
-                    {% for key,value in price_choices.items %}
                       <option value="{{ key }}">{{ value }}</option>
                     {% endfor %}
                   </select>
@@ -114,7 +94,6 @@ span.lower-text {
             <div class="row">
             {% if societys %}
                 {% for society in societys %}
-                    {{ society.id }}
                 <div class="col-sm-4">
                     <section class="hover-div"> <a href="{{ society.id }}"> <img src="{{ society.photo_main.url }}" width="100">
                         <div class="hover-div_inner">
