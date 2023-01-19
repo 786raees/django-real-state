@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from realtors.models import Realtor
+from tinymce import models as tinymce_models
 
 
 class Society(models.Model):
@@ -28,7 +29,7 @@ class Listing(models.Model):
     city = models.CharField(max_length=100, null=True)
     state = models.CharField(max_length=100, null=True)
     zipcode = models.CharField(max_length=20, null=True)
-    description = models.TextField(blank=True)
+    description = tinymce_models.HTMLField(blank=True)
     price = models.IntegerField(null=True)
     bedrooms = models.IntegerField(null=True)
     bathrooms = models.DecimalField(max_digits=2, decimal_places=1, null=True)
