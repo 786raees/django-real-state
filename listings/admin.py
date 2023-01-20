@@ -12,16 +12,6 @@ class PlotTypesAdmin(admin.ModelAdmin):
 
 admin.site.register(Plot_types, PlotTypesAdmin)
 
-class SocietyLatestNewAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published', 'title')
-  list_display_links = ('id', )
-  list_filter = ('title',)
-  list_editable = ('is_published','title')
-  search_fields = ('title',)
-  list_per_page = 25
-
-admin.site.register(Socity_latest_news, SocietyLatestNewAdmin)
-
 class SocityStatusAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'title')
   list_display_links = ('id', )
@@ -52,6 +42,49 @@ class SocityPhaseAdmin(admin.ModelAdmin):
 
 admin.site.register(Socity_phase, SocityPhaseAdmin)
 
+
+class SocitySectorAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'title')
+  list_display_links = ('id',)
+  list_filter = ('title',)
+  list_editable = ('is_published','title')
+  search_fields = ('title',)
+  list_per_page = 25
+
+admin.site.register(Socity_Sector, SocitySectorAdmin)
+
+class SocityTagsAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published','society', 'title')
+  list_display_links = ('id',)
+  list_filter = ('title',)
+  list_editable = ('is_published','society','title')
+  search_fields = ('title',)
+  list_per_page = 25
+
+admin.site.register(Socity_tags, SocityTagsAdmin)
+
+class SocityLatestNewsAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published','society','society_phase', 'title')
+  list_display_links = ('id',)
+  list_filter = ('title',)
+  list_editable = ('is_published','society','society_phase','title')
+  search_fields = ('title',)
+  list_per_page = 25
+
+admin.site.register(Socity_latest_news, SocityLatestNewsAdmin)
+
+
+class SocityRatingAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published','society','society_phase','comment','rate')
+  list_display_links = ('id',)
+  list_filter = ('rate',)
+  list_editable = ('is_published','society','society_phase','comment','rate')
+  search_fields = ('rate','comment')
+  list_per_page = 25
+
+
+admin.site.register(Socity_Rating, SocityRatingAdmin)
+
 class SocietyAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'title','address','photo_main', 'city', 'state', 'zipcode',)
   list_display_links = ('id',)
@@ -72,6 +105,16 @@ class SocityYoutubeAdmin(admin.ModelAdmin):
 
 admin.site.register(Society_Youtube_videos, SocityYoutubeAdmin)
 
+class SocityPhaseYoutubeAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'society','society_phase','yut_video_1','yut_video_2','yut_video_3','yut_video_4','yut_video_5','yut_video_6',)
+  list_display_links = ('id',)
+  list_filter = ('title',)
+  list_editable = ('is_published','society','yut_video_1','yut_video_2','yut_video_3','yut_video_4','yut_video_5','yut_video_6',)
+  search_fields = ('title',)
+  list_per_page = 25
+
+admin.site.register(Society_Phase_Youtube_videos, SocityPhaseYoutubeAdmin)
+
 class SocityHomePageImageAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'society','title','photo_main','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10')
   list_display_links = ('id',)
@@ -81,21 +124,32 @@ class SocityHomePageImageAdmin(admin.ModelAdmin):
   list_per_page = 25
 
 admin.site.register(Society_Home_Page_Images, SocityHomePageImageAdmin)
-class SocityContactUsAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published', 'society','location','phone_number','Mobile_number','whatsapp_number','fb_id','instagram_id','gmail_id','linkedin_id')
+
+
+class SocityPhaseHomePageImageAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'society','society_phase','title','photo_main','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10')
   list_display_links = ('id',)
-  list_filter = ('society','location')
-  list_editable = ('is_published','society','location','phone_number','Mobile_number','whatsapp_number','fb_id','instagram_id','gmail_id','linkedin_id')
-  search_fields = ('society','location')
+  list_filter = ('title',)
+  list_editable = ('is_published','society','title','photo_main','photo_1','photo_2','photo_3','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10')
+  search_fields = ('title',)
   list_per_page = 25
 
-admin.site.register(Society_Contact_Us, SocityContactUsAdmin)
+admin.site.register(Society_Phase_Home_Page_Images, SocityPhaseHomePageImageAdmin)
+class OwnerContactUsAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'title','location','phone_number','Mobile_number','whatsapp_number','fb_id','instagram_id','gmail_id','linkedin_id')
+  list_display_links = ('id',)
+  list_filter = ('location',)
+  list_editable = ('is_published','title','location','phone_number','Mobile_number','whatsapp_number','fb_id','instagram_id','gmail_id','linkedin_id')
+  search_fields = ('location',)
+  list_per_page = 25
+
+admin.site.register(Owner_Contact_Us, OwnerContactUsAdmin)
 class ListingAdmin(admin.ModelAdmin):
-  list_display = ('id','society', 'title', 'is_published', 'price','video_url','address','description','bedrooms','bathrooms',
+  list_display = ('id','society','society_phase', 'title', 'is_published', 'price','video_url','address','description','bedrooms','bathrooms',
                   'garage','square_foot','plot_size','photo_main','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6')
   list_display_links = ('id', )
   list_filter = ('society',)
-  list_editable = ('is_published','society','title','price','video_url','address','description','bedrooms','bathrooms',
+  list_editable = ('is_published','society','society_phase','title','price','video_url','address','description','bedrooms','bathrooms',
                   'garage','square_foot','plot_size','photo_main','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6')
   search_fields = ('title', 'description', 'address', 'price')
   list_per_page = 25
@@ -104,6 +158,19 @@ admin.site.register(Listing, ListingAdmin)
 
 
 class PlotDetailsTableAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'society', 'dimension','plot_type','plot_category',
+                  'block', 'price', 'contact', 'remarks', 'is_published')
+  list_display_links = ('id',)
+  list_filter = ('society',)
+  list_editable = ('is_published', 'society', 'dimension','plot_type','plot_category',
+                  'block', 'price', 'contact', 'remarks', 'is_published')
+  search_fields = ('society',)
+  list_per_page = 25
+
+admin.site.register(Plot_details_table, PlotDetailsTableAdmin)
+
+
+class PlotPhaseDetailsTableAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
                   'block', 'price', 'contact', 'remarks', 'is_published')
   list_display_links = ('id',)
@@ -113,21 +180,40 @@ class PlotDetailsTableAdmin(admin.ModelAdmin):
   search_fields = ('society','society_phase')
   list_per_page = 25
 
-admin.site.register(Plot_details_table, PlotDetailsTableAdmin)
-
+admin.site.register(Plot_phase_details_table, PlotPhaseDetailsTableAdmin)
 
 class SocietyDetailsHomePageAdmin(admin.ModelAdmin):
-  list_display = ('id', 'society', 'is_published', 'plot_types', 'society_status', 'rating','launch_date','approvals',
-                  'facilities','transfer_charges','transfer_office','location_on_map','society_location',
+  list_display = ('id','title', 'society', 'is_published', 'plot_types', 'society_status', 'rating','launch_date','approvals','download_location_file',
+                  'facilities','transfer_charges','transfer_office','location_on_map','society_location','tags','latest_new',
                   'official_website','official_contact_number','posession','posession_date','description_and_details_1',
                   'description_and_details_1')
   list_display_links = ('id',)
   list_filter = ('society',)
-  list_editable = ('society', 'is_published', 'plot_types', 'society_status', 'rating','launch_date','approvals',
-                  'facilities','transfer_charges','transfer_office','location_on_map','society_location',
+  list_editable = ('title','society', 'is_published', 'plot_types', 'society_status', 'rating','launch_date','approvals','download_location_file',
+                  'facilities','transfer_charges','transfer_office','location_on_map','society_location','tags','latest_new',
                   'official_website','official_contact_number','posession','posession_date','description_and_details_1',
                    'description_and_details_1')
   search_fields = ('society', 'description',)
   list_per_page = 25
 
 admin.site.register(Society_details_home_page, SocietyDetailsHomePageAdmin)
+
+
+
+
+class SocietyPhaseDetailsHomePageAdmin(admin.ModelAdmin):
+  list_display = ('id','title', 'society', 'is_published', 'plot_types', 'society_status', 'rating','launch_date','approvals','download_location_file','latest_new',
+                  'gas_facilities','water_facilities','mantaince_facilities','secuirty_facilities','sav_facilities','electricity_facilities','transfer_charges','transfer_office','location_on_map','society_location',
+                  'official_website','official_contact_number','posession','posession_date','description_and_details_1',
+                  'description_and_details_1')
+  list_display_links = ('id',)
+  list_filter = ('society',)
+  list_editable = ('title','society', 'is_published', 'plot_types', 'society_status', 'rating','launch_date','approvals','download_location_file',
+                  'gas_facilities','water_facilities','mantaince_facilities','secuirty_facilities','sav_facilities','electricity_facilities',
+                   'transfer_charges','transfer_office','location_on_map','society_location','latest_new',
+                  'official_website','official_contact_number','posession','posession_date','description_and_details_1',
+                   'description_and_details_1')
+  search_fields = ('society', 'description',)
+  list_per_page = 25
+
+admin.site.register(Society_phase_details_home_page, SocietyPhaseDetailsHomePageAdmin)
