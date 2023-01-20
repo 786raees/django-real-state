@@ -314,6 +314,7 @@ class Plot_details_table(models.Model):
     dimension = models.CharField(max_length=200)
     plot_type = models.ForeignKey(Plot_types, on_delete=models.CASCADE)
     plot_category = models.ForeignKey(Plot_category, on_delete=models.CASCADE)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE, null=True)
     block = models.CharField(max_length=200)
     price = models.CharField(max_length=200)
     contact = models.CharField(max_length=200)

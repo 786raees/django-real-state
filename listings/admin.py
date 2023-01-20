@@ -168,12 +168,12 @@ admin.site.register(Listing, ListingAdmin)
 
 
 class PlotDetailsTableAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published', 'society', 'dimension','plot_type','plot_category',
+  list_display = ('id','is_published', 'society', 'dimension','plot_type','society_phase','plot_category',
                   'block', 'price', 'contact', 'remarks', 'is_published')
   list_display_links = ('id',)
   list_filter = ('society',)
   list_editable = ('is_published', 'society', 'dimension','plot_type','plot_category',
-                  'block', 'price', 'contact', 'remarks', 'is_published')
+                  'block', 'price', 'contact','society_phase', 'remarks', 'is_published')
   search_fields = ('society',)
   list_per_page = 25
 

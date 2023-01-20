@@ -31,14 +31,14 @@ def society(request, id):
     }
   return render(request, 'pages/societys.html', context)
 def society_main_page(request, id):
-  print(id)
   society_id = Society.objects.filter(id=id).first()
   society_main = Society_details_home_page.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
-  print(society_main)
+  society_plot_table_data = Plot_details_table.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   context = {
       'society_mains': society_main,
       'state_choices': state_choices,
-      'society_id': society_id.id
+      'society_id': society_id.id,
+      'society_plot_table_datas':society_plot_table_data
     }
   return render(request, 'listings/society_main_page.html', context)
 def listing(request, listing_id):
