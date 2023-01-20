@@ -356,7 +356,7 @@ class Society_details_home_page(models.Model):
     society_home_page_images = models.ForeignKey(Society_Home_Page_Images, on_delete=models.CASCADE)
     plot_types = models.ForeignKey(Plot_types, on_delete=models.CASCADE)
     society_status = models.ForeignKey(Socity_Status, on_delete=models.CASCADE)
-    launch_date = models.CharField(max_length=1000)
+    launch_date = models.DateTimeField(default=datetime.now, blank=True)
     approvals = models.CharField(max_length=1000)
     facilities = models.CharField(max_length=2000)
     transfer_charges = models.CharField(max_length=2000)
