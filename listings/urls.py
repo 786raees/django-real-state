@@ -8,5 +8,6 @@ urlpatterns = [
     path('search', views.search, name='search'),
     path('searchSociety/<int:id>', views.searchSociety, name='searchSociety'),
     path('society/<int:id>', views.society, name='society'),
+    path('society-main/<int:id>', views.society_main_page, name='society'),
 
 ]

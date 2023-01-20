@@ -95,7 +95,7 @@ span.lower-text {
             {% if societys %}
                 {% for society in societys %}
                 <div class="col-sm-4">
-                    <section class="hover-div"> <a href="{{ society.id }}"> <img src="{{ society.photo_main.url }}" width="100">
+                    <section class="hover-div"> <a href="/listings/society-main/{{ society.id }}"> <img src="{{ society.photo_main.url }}" width="100">
                         <div class="hover-div_inner">
                             <h3><a href="#">{{ society.title }}</a></h3>
                             <p class="text-center">{{ society.address}}</p>
