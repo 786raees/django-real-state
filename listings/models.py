@@ -4,11 +4,24 @@ from realtors.models import Realtor
 from tinymce import models as tinymce_models
 from django.utils.html import mark_safe
 
+
+class city(models.Model):
+    title = models.CharField(max_length=200)
+    photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
+    is_published = models.BooleanField(default=True)
+    list_date = models.DateTimeField(default=datetime.now, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "00. Society City"
 class Society(models.Model):
-    realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
+    city = models.ForeignKey(city, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
-    city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     zipcode = models.CharField(max_length=20)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
@@ -29,7 +42,7 @@ class Society(models.Model):
         ))
 
 class Society_Youtube_videos(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING, default=None)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=200)
     yut_video_1 = models.CharField(max_length=2000, blank=True)
     yut_video_2 = models.CharField(max_length=2000, blank=True)
@@ -70,7 +83,7 @@ class Owner_Contact_Us(models.Model):
     class Meta:
         verbose_name = "03. Owner Contact Us"
 class Society_Home_Page_Images(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING, default=None)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=200)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -142,8 +155,8 @@ class Socity_phase(models.Model):
         verbose_name = "07. Society Phase"
 
 class Society_Phase_Youtube_videos(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING, default=None)
-    society_phase = models.ForeignKey(Socity_phase, on_delete=models.DO_NOTHING)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     yut_video_1 = models.CharField(max_length=2000, blank=True)
     yut_video_2 = models.CharField(max_length=2000, blank=True)
@@ -165,8 +178,8 @@ class Society_Phase_Youtube_videos(models.Model):
 
 
 class Society_Phase_Home_Page_Images(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING, default=None)
-    society_phase = models.ForeignKey(Socity_phase, on_delete=models.DO_NOTHING)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -196,8 +209,8 @@ class Society_Phase_Home_Page_Images(models.Model):
         ))
 
 class Socity_latest_news(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING, default=None)
-    society_phase = models.ForeignKey(Socity_phase, on_delete=models.DO_NOTHING)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
@@ -237,7 +250,7 @@ class Socity_Sector(models.Model):
         verbose_name = "12. Society Sector"
 
 class Socity_tags(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING, default=None)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=200)
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
@@ -251,8 +264,8 @@ class Socity_tags(models.Model):
         verbose_name = "13. Society Tag"
 
 class Socity_Rating(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING, default=None)
-    society_phase = models.ForeignKey(Socity_phase, on_delete=models.DO_NOTHING)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
     comment = models.CharField(max_length=200)
     rate = models.DecimalField(max_digits=4, max_length=4, decimal_places=1, null=True)
     is_published = models.BooleanField(default=True)
@@ -266,8 +279,8 @@ class Socity_Rating(models.Model):
     class Meta:
         verbose_name = "14. Society Rating"
 class Listing(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING, default=None)
-    society_phase = models.ForeignKey(Socity_phase, on_delete=models.DO_NOTHING)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     address = models.CharField(max_length=200, null=True)
     description = tinymce_models.HTMLField(blank=True)
@@ -297,10 +310,10 @@ class Listing(models.Model):
         verbose_name = "15. Plot Listing"
 
 class Plot_details_table(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE)
     dimension = models.CharField(max_length=200)
-    plot_type = models.ForeignKey(Plot_types, on_delete=models.DO_NOTHING)
-    plot_category = models.ForeignKey(Plot_category, on_delete=models.DO_NOTHING)
+    plot_type = models.ForeignKey(Plot_types, on_delete=models.CASCADE)
+    plot_category = models.ForeignKey(Plot_category, on_delete=models.CASCADE)
     block = models.CharField(max_length=200)
     price = models.CharField(max_length=200)
     contact = models.CharField(max_length=200)
@@ -317,11 +330,11 @@ class Plot_details_table(models.Model):
         verbose_name = "16. Plot Detail of Table Society"
 
 class Plot_phase_details_table(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING)
-    society_phase = models.ForeignKey(Socity_phase, on_delete=models.DO_NOTHING)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
     dimension = models.CharField(max_length=200)
-    plot_type = models.ForeignKey(Plot_types, on_delete=models.DO_NOTHING)
-    plot_category = models.ForeignKey(Plot_category, on_delete=models.DO_NOTHING)
+    plot_type = models.ForeignKey(Plot_types, on_delete=models.CASCADE)
+    plot_category = models.ForeignKey(Plot_category, on_delete=models.CASCADE)
     block = models.CharField(max_length=200)
     price = models.CharField(max_length=200)
     contact = models.CharField(max_length=200)
@@ -338,15 +351,15 @@ class Plot_phase_details_table(models.Model):
         verbose_name = "17. Plot Detail Table Society Phase"
 class Society_details_home_page(models.Model):
     title = models.CharField(max_length=2000, blank=True)
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING, default=None)
-    plot_details_table = models.ForeignKey(Plot_details_table, on_delete=models.DO_NOTHING)
-    society_youtube_videos = models.ForeignKey(Society_Youtube_videos, on_delete=models.DO_NOTHING)
-    society_home_page_images = models.ForeignKey(Society_Home_Page_Images, on_delete=models.DO_NOTHING)
-    plot_types = models.ForeignKey(Plot_types, on_delete=models.DO_NOTHING)
-    society_status = models.ForeignKey(Socity_Status, on_delete=models.DO_NOTHING)
-    tags = models.ForeignKey(Socity_tags, on_delete=models.DO_NOTHING)
-    rating = models.ForeignKey(Socity_Rating, on_delete=models.DO_NOTHING, default=None)
-    latest_new = models.ForeignKey(Socity_latest_news, on_delete=models.DO_NOTHING, default=None)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    plot_details_table = models.ForeignKey(Plot_details_table, on_delete=models.CASCADE)
+    society_youtube_videos = models.ForeignKey(Society_Youtube_videos, on_delete=models.CASCADE)
+    society_home_page_images = models.ForeignKey(Society_Home_Page_Images, on_delete=models.CASCADE)
+    plot_types = models.ForeignKey(Plot_types, on_delete=models.CASCADE)
+    society_status = models.ForeignKey(Socity_Status, on_delete=models.CASCADE)
+    tags = models.ForeignKey(Socity_tags, on_delete=models.CASCADE)
+    rating = models.ForeignKey(Socity_Rating, on_delete=models.CASCADE, default=None)
+    latest_new = models.ForeignKey(Socity_latest_news, on_delete=models.CASCADE, default=None)
     launch_date = models.CharField(max_length=1000)
     approvals = models.CharField(max_length=1000)
     facilities = models.CharField(max_length=2000)
@@ -381,15 +394,15 @@ class Society_details_home_page(models.Model):
 
 class Society_phase_details_home_page(models.Model):
     title = models.CharField(max_length=2000, blank=True)
-    society = models.ForeignKey(Society, on_delete=models.DO_NOTHING, default=None)
-    plot_phase_details_table = models.ForeignKey(Plot_phase_details_table, on_delete=models.DO_NOTHING)
-    society_phase_youtube_videos = models.ForeignKey(Society_Youtube_videos, on_delete=models.DO_NOTHING)
-    society_phase_home_page_images = models.ForeignKey(Society_Home_Page_Images, on_delete=models.DO_NOTHING)
-    plot_types = models.ForeignKey(Plot_types, on_delete=models.DO_NOTHING)
-    society_status = models.ForeignKey(Socity_Status, on_delete=models.DO_NOTHING)
-    sector = models.ForeignKey(Socity_Sector, on_delete=models.DO_NOTHING)
-    rating = models.ForeignKey(Socity_Rating, on_delete=models.DO_NOTHING, default=None)
-    latest_new = models.ForeignKey(Socity_latest_news, on_delete=models.DO_NOTHING, default=None)
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    plot_phase_details_table = models.ForeignKey(Plot_phase_details_table, on_delete=models.CASCADE)
+    society_phase_youtube_videos = models.ForeignKey(Society_Youtube_videos, on_delete=models.CASCADE)
+    society_phase_home_page_images = models.ForeignKey(Society_Home_Page_Images, on_delete=models.CASCADE)
+    plot_types = models.ForeignKey(Plot_types, on_delete=models.CASCADE)
+    society_status = models.ForeignKey(Socity_Status, on_delete=models.CASCADE)
+    sector = models.ForeignKey(Socity_Sector, on_delete=models.CASCADE)
+    rating = models.ForeignKey(Socity_Rating, on_delete=models.CASCADE, default=None)
+    latest_new = models.ForeignKey(Socity_latest_news, on_delete=models.CASCADE, default=None)
     launch_date = models.CharField(max_length=1000)
     approvals = models.CharField(max_length=1000)
     gas_facilities = models.BooleanField(default=True)

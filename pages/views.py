@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from listings.choices import price_choices, bedroom_choices, state_choices
 
-from listings.models import Listing, Society
+from listings.models import *
 from realtors.models import Realtor
 
 def index(request):
-    society = Society.objects.order_by('-list_date').filter(is_published=True)[:3]
+    city_data = city.objects.order_by('-list_date').filter(is_published=True)
 
     context = {
-        'societys': society,
+        'citys': city_data,
         'state_choices': state_choices,
         'bedroom_choices': bedroom_choices,
         'price_choices': price_choices
@@ -31,3 +31,19 @@ def about(request):
     }
 
     return render(request, 'pages/about.html', context)
+
+
+def searchCity(request):
+  queryset_list  = city.objects.order_by('-list_date').filter(is_published=True)
+
+  # Keywords
+  keywords = request.GET.get('keywords')
+  if keywords:
+    queryset_list = queryset_list.filter(title__icontains=keywords)
+
+  context = {
+    'citys': queryset_list,
+    'values': request.GET
+  }
+
+  return render(request, 'pages/index.html', context)

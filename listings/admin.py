@@ -73,6 +73,16 @@ class SocityLatestNewsAdmin(admin.ModelAdmin):
 
 admin.site.register(Socity_latest_news, SocityLatestNewsAdmin)
 
+class CityAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'title','photo_main')
+  list_display_links = ('id',)
+  list_filter = ('title',)
+  list_editable = ('is_published','title','photo_main')
+  search_fields = ('title',)
+  list_per_page = 25
+
+admin.site.register(city, CityAdmin)
+
 
 class SocityRatingAdmin(admin.ModelAdmin):
   list_display = ('id','is_published','society','society_phase','comment','rate')
@@ -88,7 +98,7 @@ admin.site.register(Socity_Rating, SocityRatingAdmin)
 class SocietyAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'title','address','photo_main', 'city', 'state', 'zipcode',)
   list_display_links = ('id',)
-  list_filter = ('realtor',)
+  list_filter = ('title',)
   list_editable = ('is_published','title','photo_main','address','city', 'state',)
   search_fields = ('title',)
   list_per_page = 25

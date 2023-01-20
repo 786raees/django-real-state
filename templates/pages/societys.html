@@ -16,14 +16,28 @@
           <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam
             voluptatum tempore! Consectetur, id commodi!</p>
           <div class="search">
-            <form action="{% url 'searchCity' %}">
+            <form action="{% url 'searchSociety' city_id %}">
               <!-- Form Row 1 -->
               <div class="form-row">
-                <div class="col-md-12 mb-6">
+                <div class="col-md-4 mb-3">
                   <label class="sr-only">Keywords</label>
                   <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)">
                 </div>
 
+                <div class="col-md-4 mb-3">
+                  <label class="sr-only">City</label>
+                  <input type="text" name="city" class="form-control" placeholder="City">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label class="sr-only">State</label>
+                  <select name="state" class="form-control">
+                    <option selected="true" disabled="disabled">State (All)</option>
+                    {% for key,value in state_choices.items %}
+                      <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
               </div>
               <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
             </form>
@@ -75,15 +89,20 @@ span.lower-text {
 </style>
 
 <div class="container">
-  <h2 class="text-center text-bold">City Details</h2>
+  <h2 class="text-center text-bold">Societies Details</h2>
         <div class="starter-template">
             <div class="row">
-            {% if citys %}
-                {% for city in citys %}
-                <div class="col-sm-6">
-                    <section class="hover-div"> <a href="listings/society/{{ city.id }}"> <img src="{{ city.photo_main.url }}" width="100%">
-                        <div class="hover-div_inner"  style="margin-top: 10%;">
-                            <h3><a class="lower-text" href="#">{{ city.title }}</a></h3>
+            {% if societys %}
+                {% for society in societys %}
+                <div class="col-sm-4">
+                    <section class="hover-div"> <a href="{{ society.id }}"> <img src="{{ society.photo_main.url }}" width="100">
+                        <div class="hover-div_inner">
+                            <h3><a href="#">{{ society.title }}</a></h3>
+                            <p class="text-center">{{ society.address}}</p>
+                            <div class="hover-div-lower">
+                                <div class="col-xs-6 text-left"><span class="lower-text">{{ society.city }}</span></div>
+                                <div class="col-xs-6 text-right"><span class="lower-text">{{ society.state }}</span></div>
+                            </div>
                         </div>
                         </a>
                     </section>
@@ -91,7 +110,7 @@ span.lower-text {
                 {% endfor %}
                     {% else %}
           <div class="col-md-12">
-            <p>No City Available</p>
+            <p>No Society Available</p>
           </div>
         {% endif %}
             </div>

@@ -6,5 +6,7 @@ urlpatterns = [
     path('', views.index, name='listings'),
     path('<int:listing_id>', views.listing, name='listing'),
     path('search', views.search, name='search'),
-    path('searchSociety', views.searchSociety, name='searchSociety'),
+    path('searchSociety/<int:id>', views.searchSociety, name='searchSociety'),
+    path('society/<int:id>', views.society, name='society'),
+
 ]

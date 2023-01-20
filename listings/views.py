@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .choices import price_choices, bedroom_choices, state_choices
 
-from .models import Listing, Society
+from .models import *
 
 def index(request):
   listings = Listing.objects.order_by('-list_date').filter(is_published=True)
@@ -20,6 +20,17 @@ def index(request):
 
   return render(request, 'listings/listings.html', context)
 
+def society(request, id):
+  city_id=city.objects.filter(id=id).first()
+  society = Society.objects.order_by('-list_date').filter(is_published=True).filter(city=city_id)
+
+  context = {
+      'societys': society,
+      'state_choices': state_choices,
+      'city_id':city_id.id
+    }
+
+  return render(request, 'pages/societys.html', context)
 def listing(request, listing_id):
   listing = get_object_or_404(Listing, pk=listing_id)
 
@@ -73,8 +84,9 @@ def search(request):
   return render(request, 'listings/search.html', context)
 
 
-def searchSociety(request):
-  queryset_list  = Society.objects.order_by('-list_date').filter(is_published=True)
+def searchSociety(request, id):
+  city_id = city.objects.filter(id=id).first()
+  queryset_list  = Society.objects.order_by('-list_date').filter(is_published=True).filter(city=city_id)
 
   # Keywords
   if 'keywords' in request.GET:
@@ -82,11 +94,11 @@ def searchSociety(request):
     if keywords:
       queryset_list = queryset_list.filter(address__icontains=keywords)
 
-  # City
-  if 'city' in request.GET:
-    city = request.GET['city']
-    if city:
-      queryset_list = queryset_list.filter(city__iexact=city)
+  # # City
+  # if 'city' in request.GET:
+  #   city = request.GET['city']
+  #   if city:
+  #     queryset_list = queryset_list.filter(city__iexact=city)
 
   # State
   if 'state' in request.GET:
@@ -101,4 +113,6 @@ def searchSociety(request):
     'values': request.GET
   }
 
-  return render(request, 'pages/index.html', context)
+  return render(request, 'pages/societys.html', context)
+
+
