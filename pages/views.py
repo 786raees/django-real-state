@@ -60,11 +60,12 @@ def about(request):
     society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
     team_members = Team_members.objects.order_by('-list_date').filter(is_published=True)
     # Get MVP
-    mvp_team_member = Realtor.objects.all().filter(is_mvp=True)
+    mvp_team_member = Team_members.objects.all().filter(is_mvp_team_member=True)
 
     context = {
+        'abouts':abouts,
         'team_members':team_members,
-        'mvp_team_member':mvp_team_member,
+        'mvp_team_members':mvp_team_member,
         'city_dropdown':city_data,
         'society_dropdowns': society_dropdown
     }

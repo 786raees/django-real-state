@@ -20,6 +20,7 @@ class Team_members(models.Model):
   name = models.CharField(max_length=200)
   photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
   is_mvp_team_member = models.BooleanField(default=False)
+  description = models.CharField(max_length=2000, null=True)
   is_published = models.BooleanField(default=True, null=True)
   list_date = models.DateTimeField(default=datetime.now, blank=True)
   created_at = models.DateTimeField(auto_now_add=True, blank=True)
@@ -30,6 +31,7 @@ class Team_members(models.Model):
 class About(models.Model):
   title = models.CharField(max_length=200)
   description = tinymce_models.HTMLField(blank=True)
+  we_work_message = models.CharField(max_length=2000, null=True)
   photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
   photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
   photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
