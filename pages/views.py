@@ -7,7 +7,12 @@ from realtors.models import Realtor
 from contacts.models import About, Team_members
 
 def index(request):
-    city_data = city.objects.order_by('-list_date').filter(is_published=True)
+    # Keywords
+    keywords = request.GET.get('keywords')
+    if keywords:
+        city_data = city.objects.order_by('-list_date').filter(is_published=True).filter(title__icontains=keywords)
+    else:
+        city_data = city.objects.order_by('-list_date').filter(is_published=True)
     city_datas = city.objects.order_by('-list_date').filter(is_published=True)
     society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
     contact_info = Owner_Contact_Us.objects.order_by('-list_date').filter(is_published=True)
@@ -71,22 +76,3 @@ def about(request):
     }
 
     return render(request, 'pages/about.html', context)
-
-def searchCity(request):
-    city_data = city.objects.order_by('-list_date').filter(is_published=True)
-    society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
-    queryset_list  = city.objects.order_by('-list_date').filter(is_published=True)
-
-  # Keywords
-    keywords = request.GET.get('keywords')
-    if keywords:
-        queryset_list = queryset_list.filter(title__icontains=keywords)
-
-    context = {
-    'citys': queryset_list,
-    'values': request.GET,
-      'city_dropdown':city_data,
-        'society_dropdowns': society_dropdown
-    }
-
-    return render(request, 'pages/index.html', context)

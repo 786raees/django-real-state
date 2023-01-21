@@ -16,12 +16,12 @@
           <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam
             voluptatum tempore! Consectetur, id commodi!</p>
           <div class="search">
-            <form action="{% url 'searchCity' %}">
+            <form action="{% url 'index' %}">
               <!-- Form Row 1 -->
               <div class="form-row">
                 <div class="col-md-12 mb-6">
                   <label class="sr-only">Keywords</label>
-                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)">
+                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (name of the city)">
                 </div>
 
               </div>
@@ -81,9 +81,9 @@ span.lower-text {
             {% if citys %}
                 {% for city in citys %}
                 <div class="col-sm-6">
-                    <section class="hover-div"> <a href="listings/society/{{ city.id }}"> <img src="{{ city.photo_main.url }}" width="100%">
+                    <section class="hover-div"> <a href="/listings/society/{{ city.id }}"> <img src="{{ city.photo_main.url }}" width="100%">
                         <div class="hover-div_inner"  style="margin-top: 10%;">
-                            <h3><a class="lower-text" href="#">{{ city.title }}</a></h3>
+                            <h3><a class="lower-text" href="/listings/society/{{ city.id }}">{{ city.title }}</a></h3>
                         </div>
                         </a>
                     </section>
