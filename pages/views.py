@@ -4,6 +4,7 @@ from listings.choices import price_choices, bedroom_choices, state_choices
 
 from listings.models import *
 from realtors.models import Realtor
+from contacts.models import About, Team_members
 
 def index(request):
     city_data = city.objects.order_by('-list_date').filter(is_published=True)
@@ -33,24 +34,42 @@ def index(request):
     return render(request, 'pages/index.html', context)
 
 
+# def about(request):
+#     # Get all realtors
+#     realtors = Realtor.objects.order_by('-hire_date')
+#     city_data = city.objects.order_by('-list_date').filter(is_published=True)
+#     society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
+#
+#     # Get MVP
+#     mvp_realtors = Realtor.objects.all().filter(is_mvp=True)
+#
+#     context = {
+#         'realtors': realtors,
+#         'mvp_realtors': mvp_realtors,
+#         'city_dropdown':city_data,
+#         'society_dropdowns': society_dropdown
+#     }
+#
+#     return render(request, 'pages/about.html', context)
+
+
 def about(request):
     # Get all realtors
-    realtors = Realtor.objects.order_by('-hire_date')
+    abouts = About.objects.order_by('-list_date').filter(is_published=True)
     city_data = city.objects.order_by('-list_date').filter(is_published=True)
     society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
-
+    team_members = Team_members.objects.order_by('-list_date').filter(is_published=True)
     # Get MVP
-    mvp_realtors = Realtor.objects.all().filter(is_mvp=True)
+    mvp_team_member = Realtor.objects.all().filter(is_mvp=True)
 
     context = {
-        'realtors': realtors,
-        'mvp_realtors': mvp_realtors,
+        'team_members':team_members,
+        'mvp_team_member':mvp_team_member,
         'city_dropdown':city_data,
         'society_dropdowns': society_dropdown
     }
 
     return render(request, 'pages/about.html', context)
-
 
 def searchCity(request):
     city_data = city.objects.order_by('-list_date').filter(is_published=True)

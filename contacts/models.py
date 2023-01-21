@@ -19,7 +19,8 @@ class Contact(models.Model):
 class Team_members(models.Model):
   name = models.CharField(max_length=200)
   photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
-  is_published = models.BooleanField(default=True)
+  is_mvp_team_member = models.BooleanField(default=False)
+  is_published = models.BooleanField(default=True, null=True)
   list_date = models.DateTimeField(default=datetime.now, blank=True)
   created_at = models.DateTimeField(auto_now_add=True, blank=True)
   updated_at = models.DateTimeField(auto_now=True, blank=True)

@@ -12,10 +12,10 @@ admin.site.register(Contact, ContactAdmin)
 
 
 class TeamAdmin(admin.ModelAdmin):
-  list_display = ('id', 'name', 'photo_main',)
+  list_display = ('id', 'name', 'photo_main','is_mvp_team_member')
   list_display_links = ('id', )
-  list_editable =('name', 'photo_main',)
-  search_fields = ('name',)
+  list_editable =('name', 'photo_main','is_mvp_team_member')
+  search_fields = ('name','is_mvp_team_member')
   list_per_page = 25
 
 admin.site.register(Team_members, TeamAdmin)
