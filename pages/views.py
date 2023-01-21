@@ -9,6 +9,18 @@ def index(request):
     city_data = city.objects.order_by('-list_date').filter(is_published=True)
     city_datas = city.objects.order_by('-list_date').filter(is_published=True)
     society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
+    contact_info = Owner_Contact_Us.objects.order_by('-list_date').filter(is_published=True)
+    for i in contact_info.values():
+        request.session['name'] =i['title']
+        request.session['location'] = i['location']
+        request.session['phone_number'] = i['phone_number']
+        request.session['Mobile_number'] = i['Mobile_number']
+        request.session['whatsapp_number'] = i['whatsapp_number']
+        request.session['fb_id'] = i['fb_id']
+        request.session['instagram_id'] = i['instagram_id']
+        request.session['gmail_id'] = i['gmail_id']
+        request.session['linkedin_id'] = i['linkedin_id']
+
     context = {
         'citys': city_data,
         'state_choices': state_choices,
