@@ -225,14 +225,14 @@ class SocietyPhaseDetailsHomePageAdmin(admin.ModelAdmin):
   list_display = ('id','title', 'society', 'is_published', 'plot_types','society_phase', 'society_status','launch_date','approvals','download_location_file',
                   'gas_facilities','water_facilities','mantaince_facilities','secuirty_facilities','sav_facilities','electricity_facilities','transfer_charges','transfer_office','location_on_map','society_location',
                   'official_website','official_contact_number','posession','posession_date','description_and_details_1',
-                  'description_and_details_1')
+                  'description_and_details_2')
   list_display_links = ('id',)
   list_filter = ('society',)
   list_editable = ('title','society', 'is_published', 'plot_types','society_phase', 'society_status','launch_date','approvals','download_location_file',
                   'gas_facilities','water_facilities','mantaince_facilities','secuirty_facilities','sav_facilities','electricity_facilities',
                    'transfer_charges','transfer_office','location_on_map','society_location',
                   'official_website','official_contact_number','posession','posession_date','description_and_details_1',
-                   'description_and_details_1')
+                   'description_and_details_2')
   search_fields = ('society', 'description',)
   list_per_page = 25
 
