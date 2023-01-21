@@ -34,13 +34,36 @@ def society_main_page(request, id):
   society_id = Society.objects.filter(id=id).first()
   society_main = Society_details_home_page.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   society_plot_table_data = Plot_details_table.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
+  latest_news = Socity_latest_news.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
+  society_phases = Society_phase_details_home_page.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   context = {
       'society_mains': society_main,
       'state_choices': state_choices,
       'society_id': society_id.id,
-      'society_plot_table_datas':society_plot_table_data
+      'society_plot_table_datas':society_plot_table_data,
+    'latest_news':latest_news,
+    'society_phases':society_phases
     }
   return render(request, 'listings/society_main_page.html', context)
+
+def society_phase_page(request, id_society,id_phase):
+  society_id = Society.objects.filter(id=id_society).first()
+  phase_id = Socity_phase.objects.filter(id=id_phase).first()
+  phase_main = Society_phase_details_home_page.objects.order_by('-list_date').filter(is_published=True)\
+    .filter(society=society_id).filter(society_phase=phase_id)
+  phase_plot_table_data = Plot_phase_details_table.objects.order_by('-list_date').filter(is_published=True)\
+    .filter(society=society_id).filter(society_phase=phase_id)
+  latest_news = Socity_latest_news.objects.order_by('-list_date').filter(is_published=True).filter(society_phase=phase_id)
+  # society_phases = Society_phase_details_home_page.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
+  context = {
+      'phase_mains': phase_main,
+      'state_choices': state_choices,
+      'society_id': society_id.id,
+      'phase_plot_table_datas':phase_plot_table_data,
+    'latest_news':latest_news,
+    # 'society_phases':society_phases
+    }
+  return render(request, 'listings/phase_main_page.html', context)
 def listing(request, listing_id):
   listing = get_object_or_404(Listing, pk=listing_id)
 

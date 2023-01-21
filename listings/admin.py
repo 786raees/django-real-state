@@ -64,10 +64,10 @@ class SocityTagsAdmin(admin.ModelAdmin):
 admin.site.register(Socity_tags, SocityTagsAdmin)
 
 class SocityLatestNewsAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published','society','society_phase', 'title')
+  list_display = ('id','is_published','society','news_link','society_phase', 'title')
   list_display_links = ('id',)
   list_filter = ('title',)
-  list_editable = ('is_published','society','society_phase','title')
+  list_editable = ('is_published','society','news_link','society_phase','title')
   search_fields = ('title',)
   list_per_page = 25
 
@@ -105,6 +105,16 @@ class SocietyAdmin(admin.ModelAdmin):
 
 admin.site.register(Society, SocietyAdmin)
 
+
+class SocietyPhaseSectorAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'society','society_phase','society_sector',)
+  list_display_links = ('id',)
+  list_filter = ('society_sector',)
+  list_editable = ('is_published','society','society_phase','society_sector')
+  search_fields = ('society_sector',)
+  list_per_page = 25
+
+admin.site.register(Socity_phase_Sector, SocietyPhaseSectorAdmin)
 class SocityYoutubeAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'society','yut_video_1','yut_video_2','yut_video_3','yut_video_4','yut_video_5','yut_video_6',)
   list_display_links = ('id',)
@@ -212,15 +222,15 @@ admin.site.register(Society_details_home_page, SocietyDetailsHomePageAdmin)
 
 
 class SocietyPhaseDetailsHomePageAdmin(admin.ModelAdmin):
-  list_display = ('id','title', 'society', 'is_published', 'plot_types', 'society_status', 'rating','launch_date','approvals','download_location_file','latest_new',
+  list_display = ('id','title', 'society', 'is_published', 'plot_types','society_phase', 'society_status','launch_date','approvals','download_location_file',
                   'gas_facilities','water_facilities','mantaince_facilities','secuirty_facilities','sav_facilities','electricity_facilities','transfer_charges','transfer_office','location_on_map','society_location',
                   'official_website','official_contact_number','posession','posession_date','description_and_details_1',
                   'description_and_details_1')
   list_display_links = ('id',)
   list_filter = ('society',)
-  list_editable = ('title','society', 'is_published', 'plot_types', 'society_status', 'rating','launch_date','approvals','download_location_file',
+  list_editable = ('title','society', 'is_published', 'plot_types','society_phase', 'society_status','launch_date','approvals','download_location_file',
                   'gas_facilities','water_facilities','mantaince_facilities','secuirty_facilities','sav_facilities','electricity_facilities',
-                   'transfer_charges','transfer_office','location_on_map','society_location','latest_new',
+                   'transfer_charges','transfer_office','location_on_map','society_location',
                   'official_website','official_contact_number','posession','posession_date','description_and_details_1',
                    'description_and_details_1')
   search_fields = ('society', 'description',)
