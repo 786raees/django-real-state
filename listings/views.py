@@ -24,12 +24,14 @@ def society(request, id):
   city_data = city.objects.order_by('-list_date').filter(is_published=True)
   city_id=city.objects.filter(id=id).first()
   society = Society.objects.order_by('-list_date').filter(is_published=True).filter(city=city_id)
+  society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
 
   context = {
       'societys': society,
       'state_choices': state_choices,
       'city_id':city_id.id,
-      'city_dropdown':city_data
+      'city_dropdown':city_data,
+    'society_dropdowns': society_dropdown
     }
   return render(request, 'pages/societys.html', context)
 def society_main_page(request, id):
@@ -40,7 +42,8 @@ def society_main_page(request, id):
   latest_news = Socity_latest_news.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   society_phases = Society_phase_details_home_page.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   society_tags = Socity_tags.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
-  print(society_tags)
+  society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
+
   context = {
     'city_dropdown':city_data,
       'society_mains': society_main,
@@ -49,7 +52,8 @@ def society_main_page(request, id):
       'society_plot_table_datas':society_plot_table_data,
     'latest_news':latest_news,
     'society_phases':society_phases,
-    'society_tags':society_tags
+    'society_tags':society_tags,
+    'society_dropdowns': society_dropdown
     }
   return render(request, 'listings/society_main_page.html', context)
 
@@ -62,7 +66,7 @@ def society_phase_page(request, id_society,id_phase):
   phase_plot_table_data = Plot_phase_details_table.objects.order_by('-list_date').filter(is_published=True)\
     .filter(society=society_id).filter(society_phase=phase_id)
   latest_news = Socity_latest_news.objects.order_by('-list_date').filter(is_published=True).filter(society_phase=phase_id)
-  # society_phases = Society_phase_details_home_page.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
+  society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
   context = {
     'city_dropdown':city_data,
       'phase_mains': phase_main,
@@ -70,7 +74,7 @@ def society_phase_page(request, id_society,id_phase):
       'society_id': society_id.id,
       'phase_plot_table_datas':phase_plot_table_data,
     'latest_news':latest_news,
-    # 'society_phases':society_phases
+    'society_dropdowns':society_dropdown
     }
   return render(request, 'listings/phase_main_page.html', context)
 def listing(request, listing_id):
@@ -130,6 +134,7 @@ def searchSociety(request, id):
   city_data = city.objects.order_by('-list_date').filter(is_published=True)
   city_id = city.objects.filter(id=id).first()
   queryset_list  = Society.objects.order_by('-list_date').filter(is_published=True).filter(city=city_id)
+  society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
 
   # Keywords
   if 'keywords' in request.GET:
@@ -154,7 +159,8 @@ def searchSociety(request, id):
     'state_choices': state_choices,
     'societys': queryset_list,
     'values': request.GET,
-    'city_dropdown':city_data
+    'city_dropdown':city_data,
+    'society_dropdowns': society_dropdown
   }
 
   return render(request, 'pages/societys.html', context)

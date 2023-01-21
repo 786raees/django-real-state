@@ -179,11 +179,11 @@ admin.site.register(Listing, ListingAdmin)
 
 class PlotDetailsTableAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'society', 'dimension','plot_type','society_phase','plot_category',
-                  'block', 'price', 'contact', 'remarks', 'is_published')
+                  'block', 'price', 'contact', 'remarks',)
   list_display_links = ('id',)
   list_filter = ('society',)
   list_editable = ('is_published', 'society', 'dimension','plot_type','plot_category',
-                  'block', 'price', 'contact','society_phase', 'remarks', 'is_published')
+                  'block', 'price', 'contact','society_phase', 'remarks',)
   search_fields = ('society',)
   list_per_page = 25
 
@@ -192,11 +192,11 @@ admin.site.register(Plot_details_table, PlotDetailsTableAdmin)
 
 class PlotPhaseDetailsTableAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
-                  'block', 'price', 'contact', 'remarks', 'is_published')
+                  'block', 'price', 'contact', 'remarks')
   list_display_links = ('id',)
   list_filter = ('society','society_phase')
   list_editable = ('is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
-                  'block', 'price', 'contact', 'remarks', 'is_published')
+                  'block', 'price', 'contact', 'remarks')
   search_fields = ('society','society_phase')
   list_per_page = 25
 
