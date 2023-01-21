@@ -23,7 +23,12 @@ def index(request):
 def society(request, id):
   city_data = city.objects.order_by('-list_date').filter(is_published=True)
   city_id=city.objects.filter(id=id).first()
-  society = Society.objects.order_by('-list_date').filter(is_published=True).filter(city=city_id)
+  if 'keywords' in request.GET:
+    keywords = request.GET['keywords']
+    society = Society.objects.order_by('-list_date').filter(is_published=True).filter(city=city_id).filter(
+      title__icontains=keywords)
+  else:
+    society = Society.objects.order_by('-list_date').filter(is_published=True).filter(city=city_id)
   society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
 
   context = {
@@ -128,41 +133,5 @@ def search(request):
   }
 
   return render(request, 'listings/search.html', context)
-
-
-def searchSociety(request, id):
-  city_data = city.objects.order_by('-list_date').filter(is_published=True)
-  city_id = city.objects.filter(id=id).first()
-  queryset_list  = Society.objects.order_by('-list_date').filter(is_published=True).filter(city=city_id)
-  society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
-
-  # Keywords
-  if 'keywords' in request.GET:
-    keywords = request.GET['keywords']
-    if keywords:
-      queryset_list = queryset_list.filter(address__icontains=keywords)
-
-  # # City
-  # if 'city' in request.GET:
-  #   city = request.GET['city']
-  #   if city:
-  #     queryset_list = queryset_list.filter(city__iexact=city)
-
-  # State
-  if 'state' in request.GET:
-    state = request.GET['state']
-    if state:
-      queryset_list = queryset_list.filter(state__iexact=state)
-
-
-  context = {
-    'state_choices': state_choices,
-    'societys': queryset_list,
-    'values': request.GET,
-    'city_dropdown':city_data,
-    'society_dropdowns': society_dropdown
-  }
-
-  return render(request, 'pages/societys.html', context)
 
 
