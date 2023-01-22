@@ -292,7 +292,7 @@ class Socity_Rating(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
     comment = models.CharField(max_length=200)
-    rate = models.IntegerField(choices=rating_choices, null=True, max_length=5, default=5)
+    rate = models.IntegerField(choices=rating_choices, null=True, default=5)
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)

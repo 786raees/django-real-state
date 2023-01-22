@@ -14,10 +14,12 @@
           background-color: rgb(207,23,23);border-radius: 50%;display: inline-block}
     </style>
 
-<section id="showcase-inner" class="py-5 text-white">
+<section id="showcase-inner" class="py-5 text-dark">
     <div class="container">
         {% for phase_main in phase_mains %}
       <div class="row text-center">
+            {#            <img src="{% static 'img/about.jpg' %}" alt="" style="margin-top: -5%;">#}
+
         <div class="col-md-12">
           <h1 class="display-4">{{ phase_main.title }}</h1>
           <p class="lead">
@@ -383,6 +385,5 @@
   </div>
 
   <!-- serveices  -->
-    {% include 'partials/services.html' %}
 
 {% endblock %}

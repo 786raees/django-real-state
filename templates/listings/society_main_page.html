@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% load humanize %}
-
+{% load static %}
 {% block title %} | {{ society_main.society.title }} {% endblock %}
 {% block content %}
 
@@ -15,10 +15,11 @@
     </style>
 
     {% if society_mains %}
-<section id="showcase-inner" class="py-5 text-white">
+<section id="showcase-inner" class="py-5 text-dark">
     <div class="container">
         {% for society_main in society_mains %}
       <div class="row text-center">
+{#            <img src="{% static 'img/about.jpg' %}" alt="" style="margin-top: -5%;">#}
         <div class="col-md-12">
           <h1 class="display-4">{{ society_main.title }}</h1>
           <p class="lead">

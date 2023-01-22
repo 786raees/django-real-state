@@ -25,13 +25,15 @@ img {
     position: relative;
     border-radius: 5px; }
   #showcase .overlay {
+    border: 1px solid black;
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     min-height: 400px;
     width: 100%;
-    background: rgba(51, 51, 51, 0.8); }
+    /*background: rgba(51, 51, 51, 0.8);*/
+  }
 
 #services {
   background: url(../img/building.jpg) no-repeat top center fixed/cover;
@@ -59,7 +61,8 @@ img {
     left: 0;
     min-height: 100%;
     width: 100%;
-    background: rgba(32, 134, 107, 0.8); }
+    /*background: rgba(32, 134, 107, 0.8); */
+  }
   #showcase-inner.showcase-search {
     min-height: 270px; }
 
