@@ -109,10 +109,10 @@ def search(request):
       queryset_list = queryset_list.filter(title__icontains=keywords)
 
   # City
-  # if 'city' in request.GET:
-  #   city1 = request.GET.get('city')
-  #   if city1:
-  #     queryset_list = queryset_list.filter(socity_phase_sector__society__city__contains=city1)
+  if 'city' in request.GET:
+    city1 = request.GET.get('city')
+    if city1:
+      queryset_list = queryset_list.filter(socity_phase_sector__society__city__title__contains=city1)
 
   # State
   if 'state' in request.GET:
