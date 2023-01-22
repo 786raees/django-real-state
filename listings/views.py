@@ -100,7 +100,8 @@ def listing(request, listing_id):
 
 def search(request):
   queryset_list = Listing.objects.order_by('-list_date').filter(is_published=True)
-
+  city_data = city.objects.order_by('-list_date').filter(is_published=True)
+  society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
   # Keywords
   if 'keywords' in request.GET:
     keywords = request.GET['keywords']
@@ -108,10 +109,10 @@ def search(request):
       queryset_list = queryset_list.filter(title__icontains=keywords)
 
   # City
-  if 'city' in request.GET:
-    city = request.GET['city']
-    if city:
-      queryset_list = queryset_list.filter(socity_phase_sector__society__city__contains=city)
+  # if 'city' in request.GET:
+  #   city1 = request.GET.get('city')
+  #   if city1:
+  #     queryset_list = queryset_list.filter(socity_phase_sector__society__city__contains=city1)
 
   # State
   if 'state' in request.GET:
@@ -132,6 +133,8 @@ def search(request):
       queryset_list = queryset_list.filter(price__lte=price)
 
   context = {
+    'city_dropdown': city_data,
+    'society_dropdowns': society_dropdown,
     'state_choices': state_choices,
     'bedroom_choices': bedroom_choices,
     'price_choices': price_choices,
