@@ -296,10 +296,11 @@ class Socity_Rating(models.Model):
     class Meta:
         verbose_name = "14. Society Rating"
 class Listing(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
-    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
+    socity_phase_sector = models.ForeignKey(Socity_phase_Sector, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=200)
     address = models.CharField(max_length=200, null=True)
+    block = models.CharField(max_length=200, null=True)
+    plot_no = models.CharField(max_length=200, null=True)
     description = tinymce_models.HTMLField(blank=True)
     video_url = models.CharField(max_length=1000, null=True)
     price = models.IntegerField(null=True)

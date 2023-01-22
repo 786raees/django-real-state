@@ -165,11 +165,11 @@ class OwnerContactUsAdmin(admin.ModelAdmin):
 
 admin.site.register(Owner_Contact_Us, OwnerContactUsAdmin)
 class ListingAdmin(admin.ModelAdmin):
-  list_display = ('id','society','society_phase', 'title', 'is_published', 'price','video_url','address','description','bedrooms','bathrooms',
+  list_display = ('id','socity_phase_sector','block','plot_no', 'title', 'is_published', 'price','video_url','address','description','bedrooms','bathrooms',
                   'garage','square_foot','plot_size','photo_main','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6')
   list_display_links = ('id', )
-  list_filter = ('society',)
-  list_editable = ('is_published','society','society_phase','title','price','video_url','address','description','bedrooms','bathrooms',
+  list_filter = ('socity_phase_sector',)
+  list_editable = ('is_published','socity_phase_sector','block','plot_no','title','price','video_url','address','description','bedrooms','bathrooms',
                   'garage','square_foot','plot_size','photo_main','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6')
   search_fields = ('title', 'description', 'address', 'price')
   list_per_page = 25

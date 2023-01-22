@@ -10,8 +10,12 @@ def index(request):
   paginator = Paginator(listings, 6)
   page = request.GET.get('page')
   paged_listings = paginator.get_page(page)
+  city_data = city.objects.order_by('-list_date').filter(is_published=True)
+  society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
 
   context = {
+    'city_dropdown': city_data,
+    'society_dropdowns': society_dropdown,
     'listings': paged_listings,
     'state_choices': state_choices,
     'bedroom_choices': bedroom_choices,
@@ -84,33 +88,36 @@ def society_phase_page(request, id_society,id_phase):
   return render(request, 'listings/phase_main_page.html', context)
 def listing(request, listing_id):
   listing = get_object_or_404(Listing, pk=listing_id)
-
+  city_data = city.objects.order_by('-list_date').filter(is_published=True)
+  society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
   context = {
+    'city_dropdown': city_data,
+    'society_dropdowns': society_dropdown,
     'listing': listing
   }
 
   return render(request, 'listings/listing.html', context)
 
 def search(request):
-  queryset_list = Listing.objects.order_by('-list_date')
+  queryset_list = Listing.objects.order_by('-list_date').filter(is_published=True)
 
   # Keywords
   if 'keywords' in request.GET:
     keywords = request.GET['keywords']
     if keywords:
-      queryset_list = queryset_list.filter(description__icontains=keywords)
+      queryset_list = queryset_list.filter(title__icontains=keywords)
 
   # City
   if 'city' in request.GET:
     city = request.GET['city']
     if city:
-      queryset_list = queryset_list.filter(city__iexact=city)
+      queryset_list = queryset_list.filter(socity_phase_sector__society__city__contains=city)
 
   # State
   if 'state' in request.GET:
     state = request.GET['state']
     if state:
-      queryset_list = queryset_list.filter(state__iexact=state)
+      queryset_list = queryset_list.filter(socity_phase_sector__society__state__contains=state)
 
   # Bedrooms
   if 'bedrooms' in request.GET:

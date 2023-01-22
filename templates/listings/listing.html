@@ -11,7 +11,7 @@
         <div class="col-md-12">
           <h1 class="display-4">{{ listing.title }}</h1>
           <p class="lead">
-            <i class="fas fa-map-marker"></i> {{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</p>
+            <i class="fas fa-map-marker"></i>{{ listing.socity_phase_sector.society.city }} {{ listing.socity_phase_sector.society.state }}, {{ listing.socity_phase_sector.society.zipcode }}</p>
         </div>
       </div>
     </div>
@@ -116,7 +116,7 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-money-bill-alt"></i> Asking Price:
-                  <span class="float-right">PKR{{ listing.price | intcomma }}</span>
+                  <span class="float-right">PKR-{{ listing.price | intcomma }}</span>
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-bed"></i> Bedrooms:
@@ -131,28 +131,38 @@
                   <span class="float-right">{{ listing.garage }}
                   </span>
                 </li>
+                                  <li class="list-group-item text-secondary">
+                  <i class="fas fa-home"></i> Garage:
+                  <span class="float-right">{{ listing.block }}
+                  </span>
+                </li>
               </ul>
             </div>
             <div class="col-md-6">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-th-large"></i> Square Feet:
-                  <span class="float-right">{{ listing.sqft }}</span>
+                  <span class="float-right">{{ listing.square_foot }}</span>
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-square"></i> Lot Size:
-                  <span class="float-right">{{ listing.lot_size }} Acres
+                  <span class="float-right">{{ listing.plot_size }} Acres
                   </span>
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-calendar"></i> Listing Date:
                   <span class="float-right">{{ listing.list_date }}</span>
                 </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-bed"></i> Realtor:
-                  <span class="float-right">{{ listing.society.realtor.name }}
+                                  <li class="list-group-item text-secondary">
+                  <i class="fas fa-home"></i> Plot No:
+                  <span class="float-right">{{ listing.plot_no }}
                   </span>
                 </li>
+{#                <li class="list-group-item text-secondary">#}
+{#                  <i class="fas fa-bed"></i> Realtor:#}
+{#                  <span class="float-right">{{ listing.society.realtor.name }}#}
+{#                  </span>#}
+{#                </li>#}
 
 
               </ul>
@@ -167,13 +177,13 @@
           </div>
         </div>
         <div class="col-md-3">
-          <div class="card mb-3">
-            <img class="card-img-top" src="{{ listing.realtor.photo.url }}" alt="">
-            <div class="card-body">
-              <h5 class="card-title">Property Realtor</h5>
-              <h6 class="text-secondary">{{ listing.realtor }}</h6>
-            </div>
-          </div>
+{#          <div class="card mb-3">#}
+{#            <img class="card-img-top" src="{{ listing.realtor.photo.url }}" alt="">#}
+{#            <div class="card-body">#}
+{#              <h5 class="card-title">Property Realtor</h5>#}
+{#              <h6 class="text-secondary">{{ listing.realtor }}</h6>#}
+{#            </div>#}
+{#          </div>#}
           <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
         </div>
       </div>
