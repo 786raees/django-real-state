@@ -5,16 +5,16 @@
 {% block title %} | Browse Property Listings {% endblock %}
 
 {% block content %}
-<section id="showcase-inner" class="py-5 text-white">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h1 class="display-4">Browse Our Properties</h1>
-          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
-        </div>
-      </div>
-    </div>
-  </section>
+{#<section id="showcase-inner" class="py-5 text-white">#}
+{#    <div class="container">#}
+{#      <div class="row text-center">#}
+{#        <div class="col-md-12">#}
+{#          <h1 class="display-4">Search By Properties</h1>#}
+{#          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </section>#}
 
     <!-- Showcase -->
 <section id="showcase" style="min-height: 510px !important;">
@@ -22,10 +22,10 @@
       <div class="home-search p-5">
         <div class="overlay p-5">
           <h1 class="display-4 mb-4">
-            Property Searching Just Got So Easy
+            Search By Properties
           </h1>
-          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam
-            voluptatum tempore! Consectetur, id commodi!</p>
+{#          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam#}
+{#            voluptatum tempore! Consectetur, id commodi!</p>#}
           <div class="search">
             <form action="{% url 'search' %}">
               <!-- Form Row 1 -->
@@ -202,6 +202,5 @@
       </div>
     </div>
   </section>
-    {% include 'partials/services.html' %}
 
 {% endblock %}

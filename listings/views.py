@@ -55,9 +55,12 @@ def society_main_page(request, id):
   society_rating = Socity_Rating.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   total_rating = len(society_rating)
   total_rate = 0
-  for rate in society_rating:
-    total_rate = total_rate + rate.rate
-  total_society_rating = total_rate/total_rating
+  try:
+    for rate in society_rating:
+      total_rate = total_rate + rate.rate
+    total_society_rating = total_rate/total_rating
+  except:
+    total_society_rating = 0
 
   context = {
     'total_society_rating':total_society_rating,

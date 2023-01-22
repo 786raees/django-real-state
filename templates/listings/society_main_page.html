@@ -14,6 +14,7 @@
           background-color: rgb(207,23,23);border-radius: 50%;display: inline-block}
     </style>
 
+    {% if society_mains %}
 <section id="showcase-inner" class="py-5 text-white">
     <div class="container">
         {% for society_main in society_mains %}
@@ -358,7 +359,14 @@
       </div>
     </div>
   </section>
+    {% else %}
+        <div class="row" style="text-align: center">
+                      <div class="col-md-12">
+            <p>No Detail Available</p>
+          </div>
+        </div>
 
+    {% endif %}
 
     <!-- Rating Modal -->
       <div class="modal fade" id="RatingModal" role="dialog">
@@ -436,6 +444,5 @@
 {#      </div>#}
 {#    </div>#}
 {#  </div>#}
-    {% include 'partials/services.html' %}
 
 {% endblock %}
