@@ -57,11 +57,7 @@ def society_main_page(request, id):
   total_rate = 0
   for rate in society_rating:
     total_rate = total_rate + rate.rate
-    print(total_rate)
   total_society_rating = total_rate/total_rating
-  print(total_society_rating)
-
-
 
   context = {
     'total_society_rating':total_society_rating,
@@ -93,9 +89,7 @@ def society_phase_page(request, id_society,id_phase):
   total_rate = 0
   for rate in phase_rating:
     total_rate = total_rate + rate.rate
-    print(total_rate)
   total_phase_rating = total_rate/total_rating
-  print(total_phase_rating)
   context = {
     'total_phase_rating': total_phase_rating,
     'phase_ratings': phase_rating,
