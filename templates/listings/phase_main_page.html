@@ -124,7 +124,11 @@
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-square"></i> possession:
-                  <span class="float-right">{{ phase_main.posession }}
+                  {% if phase_main.posession  %}
+                  <span class="float-right">Yes
+                      {% else %}
+                        <span class="float-right">No
+                      {% endif %}
                   </span>
                 </li>
                 <li class="list-group-item text-secondary">

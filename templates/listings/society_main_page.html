@@ -108,7 +108,11 @@
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-square"></i> possession:
-                  <span class="float-right">{{ society_main.posession }}
+                    {% if society_main.posession  %}
+                  <span class="float-right">Yes
+                      {% else %}
+                        <span class="float-right">No
+                      {% endif %}
                   </span>
                 </li>
                 <li class="list-group-item text-secondary">
