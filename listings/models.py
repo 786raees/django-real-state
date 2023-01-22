@@ -4,7 +4,15 @@ from realtors.models import Realtor
 from tinymce import models as tinymce_models
 from django.utils.html import mark_safe
 
+rating_choices = (
+    (0,0),
+    (1,1),
+    (2,2),
+    (3,3),
+    (4,4),
+    (5,5),
 
+)
 class city(models.Model):
     title = models.CharField(max_length=200)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
@@ -284,7 +292,7 @@ class Socity_Rating(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
     comment = models.CharField(max_length=200)
-    rate = models.DecimalField(max_digits=4, max_length=4, decimal_places=1, null=True)
+    rate = models.IntegerField(choices=rating_choices, null=True, max_length=5, default=5)
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
