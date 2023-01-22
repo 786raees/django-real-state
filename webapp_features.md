@@ -36,7 +36,7 @@
 - [x]  Listing page should have a form to submit inquiry for that property listing
 - [x]  Form info should go to database and notify realtor(s) with an email
 - [x]  Frontend register/login to track inquiries
-- [x]  Both unregistered and registered users can submit form. If registered, can only submit one per listing
+- [x]  Both unregistered and registered users can submit. If registered, can only submit one per listing
 
 **LISTING PAGE FIELDS**
 
