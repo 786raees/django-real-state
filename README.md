@@ -1,6 +1,6 @@
-# Real Estate Django Web App
+# Wirsa Real Estate Django Web App
 
-A real estate listings website built with `python` `django` `bootstrap`.
+A Wirsa real estate listings website built with `python` `django` `bootstrap`.
 
 A simple, reponsive  website. Built with:
 
