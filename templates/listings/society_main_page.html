@@ -20,7 +20,9 @@
         {% for society_main in society_mains %}
       <div class="row text-center">
 {#            <img src="{% static 'img/about.jpg' %}" alt="" style="margin-top: -5%;">#}
-        <div class="col-md-12">
+                  <img class="d-block w-100" src="{{ society_main.society_home_page_images.photo_main.url }}" style="margin-top: -4.2%;" alt="First slide">
+
+        <div class="col-md-12" style="margin-top: -23%;">
           <h1 class="display-4">{{ society_main.title }}</h1>
           <p class="lead">
             <i class="fas fa-map-marker"></i> {{ society_main.society.city }} {{ society_main.society.state }}, {{ society_main.society.zipcode }}</p>

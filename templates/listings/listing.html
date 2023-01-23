@@ -5,10 +5,12 @@
 {% block title %} | {{ listing.title }} {% endblock %}
 
 {% block content %}
-<section id="showcase-inner" class="py-5 text-white">
+<section id="showcase-inner" class="py-5 text-dark">
     <div class="container">
       <div class="row text-center">
-        <div class="col-md-12">
+                      <img class="d-block w-100" src="{{ listing.photo_main.url }}" style="margin-top: -4.2%;" alt="First slide">
+
+        <div class="col-md-12" style="margin-top: -23%;">
           <h1 class="display-4">{{ listing.title }}</h1>
           <p class="lead">
             <i class="fas fa-map-marker"></i>{{ listing.socity_phase_sector.society.city }} {{ listing.socity_phase_sector.society.state }}, {{ listing.socity_phase_sector.society.zipcode }}</p>
@@ -42,8 +44,11 @@
 
     <div class="container">
       <a href="{% url 'listings' %}" class="btn btn-light mb-4">Back To Listings</a>
+    <div class="col-md-3" style="float: right">
+        <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
+    </div>
    <div class="row">
-   <div class="col-md-9">
+   <div class="col-md-12">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
       {% if listing.photo_main %}
@@ -176,7 +181,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3">
+{#        <div class="col-md-3">#}
 {#          <div class="card mb-3">#}
 {#            <img class="card-img-top" src="{{ listing.realtor.photo.url }}" alt="">#}
 {#            <div class="card-body">#}
@@ -184,8 +189,8 @@
 {#              <h6 class="text-secondary">{{ listing.realtor }}</h6>#}
 {#            </div>#}
 {#          </div>#}
-          <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
-        </div>
+{#          <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>#}
+{#        </div>#}
       </div>
     </div>
   </section>

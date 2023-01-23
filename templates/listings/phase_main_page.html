@@ -19,8 +19,9 @@
         {% for phase_main in phase_mains %}
       <div class="row text-center">
             {#            <img src="{% static 'img/about.jpg' %}" alt="" style="margin-top: -5%;">#}
+            <img class="d-block w-100" src="{{ phase_main.society_phase_home_page_images.photo_main.url }}" style="margin-top: -4.2%;" alt="First slide">
 
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin-top: -23%;">
           <h1 class="display-4">{{ phase_main.title }}</h1>
           <p class="lead">
             <i class="fas fa-map-marker"></i> {{ phase_main.society.city }} {{ phase_main.society.state }}, {{ phase_main.society.zipcode }}</p>
