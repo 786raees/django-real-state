@@ -418,7 +418,6 @@ class Society_details_home_page(models.Model):
 class Society_phase_details_home_page(models.Model):
     title = models.CharField(max_length=2000, blank=True)
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
-    plot_phase_details_table = models.ForeignKey(Plot_phase_details_table, on_delete=models.CASCADE)
     society_phase_youtube_videos = models.ForeignKey(Society_Phase_Youtube_videos, on_delete=models.CASCADE)
     society_phase_home_page_images = models.ForeignKey(Society_Phase_Home_Page_Images, on_delete=models.CASCADE)
     plot_types = models.ForeignKey(Plot_types, on_delete=models.CASCADE)
