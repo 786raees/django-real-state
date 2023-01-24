@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load embed_video_tags %}
 {% load humanize %}
 {% load static %}
 {% block title %} | {{ society_main.society.title }} {% endblock %}
@@ -154,8 +154,11 @@
         </div></div>
     <div class="container mt-5">
     <div class="row">
-        <div class="col-md-12">Here to Download Society Map:
-            <button>Download File</button>
+                <div class="col-md-12">
+            Click Here to Download Society Map:
+            {% if society_main.download_location_file %}
+                <button class="btn btn-dark"><a style="color: white; text-decoration: none" href="{{ society_main.download_location_file.url }}" download="">Download</a></button>
+            {% endif %}
         </div></div></div>
    {% endfor %}
 
@@ -333,11 +336,73 @@
   </a>
 </div>
 </div>
-{#             videos#}
 
-{#             <div class="embed-responsive embed-responsive-16by9">#}
-{#              <iframe class="embed-responsive-item" src="https://youtu.be/F5mk_hbLsaM"></iframe>#}
-{#            </div>#}
+
+
+         <!--    videos -->
+
+
+
+<div class="col-md-9 mt-4">
+    <div id="carouselExampleIndicators1" class="carousel slide" data-interval="false">
+  <ol class="carousel-indicators">
+      {% if society_main.society_youtube_videos.yut_video_1 %}
+    <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+      {% endif %}
+      {% if society_main.society_youtube_videos.yut_video_2 %}
+    <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+  {% endif %}
+      {% if society_main.society_youtube_videos.yut_video_3 %}
+    <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+  {% endif %}
+        {% if society_main.society_youtube_videos.yut_video_4 %}
+    <li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
+  {% endif %}
+      {% if society_main.society_youtube_videos.yut_video_5 %}
+    <li data-target="#carouselExampleIndicators1" data-slide-to="4"></li>
+  {% endif %}
+        {% if society_main.society_youtube_videos.yut_video_6 %}
+    <li data-target="#carouselExampleIndicators1" data-slide-to="5"></li>
+  {% endif %}
+  </ol>
+  <div class="carousel-inner">
+      {% if society_main.society_youtube_videos.yut_video_1 %}
+    <div class="carousel-item active hover-zoom">
+      {% video society_main.society_youtube_videos.yut_video_1 '1000x480' %}
+    </div>
+      {% endif %}
+      {% if society_main.society_youtube_videos.yut_video_2 %}
+    <div class="carousel-item hover-zoom">
+      {% video society_main.society_youtube_videos.yut_video_2 '1000x480' %}
+    </div>
+  {% endif %}
+      {% if society_main.society_youtube_videos.yut_video_3 %}
+    <div class="carousel-item">
+{% video society_main.society_youtube_videos.yut_video_3 '1000x480' %}    </div>
+  {% endif %}
+        {% if society_main.society_youtube_videos.yut_video_4 %}
+    <div class="carousel-item hover-zoom">
+{% video society_main.society_youtube_videos.yut_video_4 '1000x480' %}    </div>
+  {% endif %}
+      {% if society_main.society_youtube_videos.yut_video_5 %}
+    <div class="carousel-item">
+{% video society_main.society_youtube_videos.yut_video_5 '1000x480' %}    </div>
+  {% endif %}
+        {% if society_main.society_youtube_videos.yut_video_6 %}
+    <div class="carousel-item">
+{% video society_main.society_youtube_videos.yut_video_6 '1000x480' %}    </div>
+  {% endif %}
+  </div>
+  <a class="carousel-control-prev" style="margin-bottom: 15%" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" style="margin-bottom: 15%" href="#carouselExampleIndicators1" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
 
     {% endfor %}
 

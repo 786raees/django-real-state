@@ -3,7 +3,7 @@ from datetime import datetime
 from realtors.models import Realtor
 from tinymce import models as tinymce_models
 from django.utils.html import mark_safe
-
+from  embed_video.fields  import  EmbedVideoField
 rating_choices = (
     (0,0),
     (1,1),
@@ -52,12 +52,12 @@ class Society(models.Model):
 class Society_Youtube_videos(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=200)
-    yut_video_1 = models.CharField(max_length=2000, blank=True)
-    yut_video_2 = models.CharField(max_length=2000, blank=True)
-    yut_video_3 = models.CharField(max_length=2000, blank=True)
-    yut_video_4 = models.CharField(max_length=2000, blank=True)
-    yut_video_5 = models.CharField(max_length=2000, blank=True)
-    yut_video_6 = models.CharField(max_length=2000, blank=True)
+    yut_video_1 = EmbedVideoField()
+    yut_video_2 = EmbedVideoField()
+    yut_video_3 = EmbedVideoField()
+    yut_video_4 = EmbedVideoField()
+    yut_video_5 = EmbedVideoField()
+    yut_video_6 = EmbedVideoField()
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     created_at= models.DateTimeField(auto_now_add=True, blank=True)
@@ -193,12 +193,12 @@ class Society_Phase_Youtube_videos(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    yut_video_1 = models.CharField(max_length=2000, blank=True)
-    yut_video_2 = models.CharField(max_length=2000, blank=True)
-    yut_video_3 = models.CharField(max_length=2000, blank=True)
-    yut_video_4 = models.CharField(max_length=2000, blank=True)
-    yut_video_5 = models.CharField(max_length=2000, blank=True)
-    yut_video_6 = models.CharField(max_length=2000, blank=True)
+    yut_video_1 = EmbedVideoField()
+    yut_video_2 = EmbedVideoField()
+    yut_video_3 = EmbedVideoField()
+    yut_video_4 = EmbedVideoField()
+    yut_video_5 = EmbedVideoField()
+    yut_video_6 = EmbedVideoField()
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     created_at= models.DateTimeField(auto_now_add=True, blank=True)
@@ -390,7 +390,7 @@ class Society_details_home_page(models.Model):
     transfer_office = models.CharField(max_length=2000)
     location_on_map = models.CharField(max_length=1000)
     society_location = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    download_location_file = models.CharField(max_length=1000)
+    download_location_file = models.FileField(upload_to='locationMap/%Y/%m/%d/', blank=True)
     official_website = models.CharField(max_length=1000)
     official_contact_number = models.CharField(max_length=1000)
     posession = models.BooleanField(default=False)
@@ -435,7 +435,7 @@ class Society_phase_details_home_page(models.Model):
     transfer_office = models.CharField(max_length=2000)
     location_on_map = models.CharField(max_length=1000)
     society_location = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    download_location_file = models.CharField(max_length=1000)
+    download_location_file = models.FileField(upload_to='locationMap/%Y/%m/%d/', blank=True)
     official_website = models.CharField(max_length=1000)
     official_contact_number = models.CharField(max_length=1000)
     posession = models.BooleanField(default=False)

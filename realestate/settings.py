@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'tinymce',
+    'embed_video',
 ]
 
 MIDDLEWARE = [
