@@ -4,6 +4,7 @@ from realtors.models import Realtor
 from tinymce import models as tinymce_models
 from django.utils.html import mark_safe
 from  embed_video.fields  import  EmbedVideoField
+from ckeditor.fields import RichTextField
 rating_choices = (
     (0,0),
     (1,1),
@@ -309,7 +310,7 @@ class Listing(models.Model):
     address = models.CharField(max_length=200, null=True)
     block = models.CharField(max_length=200, null=True)
     plot_no = models.CharField(max_length=200, null=True)
-    description = tinymce_models.HTMLField(blank=True)
+    description = RichTextField()
     video_url = models.CharField(max_length=1000, null=True)
     price = models.IntegerField(null=True)
     bedrooms = models.IntegerField(null=True)
@@ -395,8 +396,8 @@ class Society_details_home_page(models.Model):
     official_contact_number = models.CharField(max_length=1000)
     posession = models.BooleanField(default=False)
     posession_date = models.DateTimeField(default=datetime.now, blank=True)
-    description_and_details_1 = tinymce_models.HTMLField(blank=True)
-    description_and_details_2 = tinymce_models.HTMLField(blank=True)
+    description_and_details_1 = RichTextField()
+    description_and_details_2 = RichTextField()
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
@@ -440,8 +441,8 @@ class Society_phase_details_home_page(models.Model):
     official_contact_number = models.CharField(max_length=1000)
     posession = models.BooleanField(default=False)
     posession_date = models.DateTimeField(default=datetime.now, blank=True)
-    description_and_details_1 = tinymce_models.HTMLField(blank=True)
-    description_and_details_2 = tinymce_models.HTMLField(blank=True)
+    description_and_details_1 = RichTextField()
+    description_and_details_2 = RichTextField()
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
