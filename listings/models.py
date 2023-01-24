@@ -5,6 +5,8 @@ from tinymce import models as tinymce_models
 from django.utils.html import mark_safe
 from  embed_video.fields  import  EmbedVideoField
 from ckeditor.fields import RichTextField
+from django.db.models import UniqueConstraint
+from django.db.models.functions import Upper
 rating_choices = (
     (0,0),
     (1,1),
@@ -15,7 +17,7 @@ rating_choices = (
 
 )
 class city(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, unique=True)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
@@ -51,7 +53,7 @@ class Society(models.Model):
         ))
 
 class Society_Youtube_videos(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society = models.OneToOneField(Society, on_delete=models.CASCADE, default=None, unique=True)
     title = models.CharField(max_length=200)
     yut_video_1 = EmbedVideoField()
     yut_video_2 = EmbedVideoField()
@@ -92,7 +94,7 @@ class Owner_Contact_Us(models.Model):
     class Meta:
         verbose_name = "03. Owner Contact Us"
 class Society_Home_Page_Images(models.Model):
-    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society = models.OneToOneField(Society, on_delete=models.CASCADE, default=None, unique=True)
     title = models.CharField(max_length=200)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -115,7 +117,6 @@ class Society_Home_Page_Images(models.Model):
 
     class Meta:
         verbose_name = "04. Society Home Page Images"
-
     def img_preview(self):  # new
         return mark_safe('<img src = "{url}" width = "300"/>'.format(
             url=self.photo_main.url
@@ -189,6 +190,7 @@ class Socity_phase_Sector(models.Model):
 
     class Meta:
         verbose_name = "20. Society Phase and Sector"
+        unique_together = ('society', 'society_phase','society_sector')
 
 class Society_Phase_Youtube_videos(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
@@ -210,6 +212,7 @@ class Society_Phase_Youtube_videos(models.Model):
 
     class Meta:
         verbose_name = "08. Society Phase Youtube Videos"
+        unique_together = ('society', 'society_phase',)
 
 
 
@@ -238,6 +241,7 @@ class Society_Phase_Home_Page_Images(models.Model):
 
     class Meta:
         verbose_name = "09. Society Phase Home Page Images"
+        unique_together = ('society', 'society_phase',)
 
     def img_preview(self):  # new
         return mark_safe('<img src = "{url}" width = "300"/>'.format(
@@ -408,6 +412,7 @@ class Society_details_home_page(models.Model):
 
     class Meta:
         verbose_name = "18. Society Detail Home Page"
+        unique_together = ('society', 'society_youtube_videos', 'society_home_page_images')
 
     def img_preview(self):  # new
         return mark_safe('<img src = "{url}" width = "300"/>'.format(
@@ -453,6 +458,7 @@ class Society_phase_details_home_page(models.Model):
 
     class Meta:
         verbose_name = "19. Society Phase Detail Home Page"
+        unique_together=('society','society_phase_youtube_videos','society_phase_home_page_images','society_phase')
 
     def img_preview(self):  # new
         return mark_safe('<img src = "{url}" width = "300"/>'.format(
