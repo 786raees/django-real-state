@@ -5,12 +5,12 @@
 {% block title %} | {{ listing.title }} {% endblock %}
 
 {% block content %}
-<section id="showcase-inner" class="py-5 text-dark">
+<section id="showcase-inner" class="py-5 text-white">
     <div class="container">
       <div class="row text-center">
                       <img class="d-block w-100" src="{{ listing.photo_main.url }}" style="margin-top: -4.2%;" alt="First slide">
 
-        <div class="col-md-12" style="margin-top: -23%;">
+        <div class="col-md-12" style="margin-top: -40%;">
           <h1 class="display-4">{{ listing.title }}</h1>
           <p class="lead">
             <i class="fas fa-map-marker"></i>{{ listing.socity_phase_sector.society.city }} {{ listing.socity_phase_sector.society.state }}, {{ listing.socity_phase_sector.society.zipcode }}</p>
