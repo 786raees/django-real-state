@@ -164,7 +164,8 @@
    {% for phase_main in phase_mains %}
        <div class="row mb-5">
         <div class="col-md-12">
-            {{ phase_main.location_on_map|safe }}
+                        <iframe src="{{ phase_main.location_on_map|safe }}" width="100%" height="450" style="border: 0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
         </div></div>
     <div class="container mt-5">
     <div class="row">
@@ -243,7 +244,7 @@
                 {{ phase_main.description_and_details_2|safe }}
             </div>
           </div>
-
+<div class="col-md-12">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
       {% if phase_main.society_phase_home_page_images.photo_main %}
@@ -346,7 +347,7 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
+</div>
 {#             videos#}
 
 {#             <div class="embed-responsive embed-responsive-16by9">#}
