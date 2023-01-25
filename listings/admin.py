@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from django.utils.html import format_html
 from .models import *
 
 class PlotTypesAdmin(admin.ModelAdmin):
@@ -72,8 +72,6 @@ class SocityLatestNewsAdmin(admin.ModelAdmin):
   list_per_page = 25
 
 admin.site.register(Socity_latest_news, SocityLatestNewsAdmin)
-
-from django.utils.html import format_html
 
 class CityAdmin(admin.ModelAdmin):
   def image_tag(self, obj):
