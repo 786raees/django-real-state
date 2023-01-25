@@ -13,6 +13,3 @@ class Realtor(models.Model):
   hire_date = models.DateTimeField(default=datetime.now, blank=True)
   def __str__(self):
     return self.name
-
-  def img_preview(self):  # new
-    return mark_safe('<img src = "{}" width = "300"/>'.format(self.photo.url))

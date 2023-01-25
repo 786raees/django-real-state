@@ -73,8 +73,13 @@ class SocityLatestNewsAdmin(admin.ModelAdmin):
 
 admin.site.register(Socity_latest_news, SocityLatestNewsAdmin)
 
+from django.utils.html import format_html
+
 class CityAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published', 'title','photo_main')
+  def image_tag(self, obj):
+    return format_html('<img src="{}" style="max-width:200px; max-height:200px"/>'.format(obj.photo_main.url))
+
+  list_display = ('id','is_published', 'title','image_tag','photo_main')
   list_display_links = ('id',)
   list_filter = ('title',)
   list_editable = ('is_published','title','photo_main')

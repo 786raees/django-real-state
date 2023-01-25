@@ -47,11 +47,6 @@ class Society(models.Model):
     class Meta:
         verbose_name = "01. Society Name"
 
-    def img_preview(self):  # new
-        return mark_safe('<img src = "{url}" width = "300"/>'.format(
-            url=self.photo_main.url
-        ))
-
 class Society_Youtube_videos(models.Model):
     society = models.OneToOneField(Society, on_delete=models.CASCADE, default=None, unique=True)
     title = models.CharField(max_length=200)
@@ -117,10 +112,6 @@ class Society_Home_Page_Images(models.Model):
 
     class Meta:
         verbose_name = "04. Society Home Page Images"
-    def img_preview(self):  # new
-        return mark_safe('<img src = "{url}" width = "300"/>'.format(
-            url=self.photo_main.url
-        ))
 
 
 class Plot_types(models.Model):
@@ -242,11 +233,6 @@ class Society_Phase_Home_Page_Images(models.Model):
     class Meta:
         verbose_name = "09. Society Phase Home Page Images"
         unique_together = ('society', 'society_phase',)
-
-    def img_preview(self):  # new
-        return mark_safe('<img src = "{url}" width = "300"/>'.format(
-            url=self.photo_main.url
-        ))
 
 class Socity_latest_news(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
@@ -414,11 +400,6 @@ class Society_details_home_page(models.Model):
         verbose_name = "18. Society Detail Home Page"
         unique_together = ('society',)
 
-    def img_preview(self):  # new
-        return mark_safe('<img src = "{url}" width = "300"/>'.format(
-            url=self.society_location.url
-        ))
-
 
 
 class Society_phase_details_home_page(models.Model):
@@ -459,8 +440,3 @@ class Society_phase_details_home_page(models.Model):
     class Meta:
         verbose_name = "19. Society Phase Detail Home Page"
         unique_together=('society','society_phase')
-
-    def img_preview(self):  # new
-        return mark_safe('<img src = "{url}" width = "300"/>'.format(
-            url=self.society_location.url
-        ))
