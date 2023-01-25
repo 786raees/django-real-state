@@ -314,7 +314,7 @@ class Listing(models.Model):
     address = models.CharField(max_length=200, null=True)
     block = models.CharField(max_length=200, null=True)
     plot_no = models.CharField(max_length=200, null=True)
-    description = RichTextField()
+    description = RichTextField(blank=True, null=True)
     video_url = models.CharField(max_length=1000, null=True)
     price = models.IntegerField(null=True)
     bedrooms = models.IntegerField(null=True)
@@ -400,8 +400,8 @@ class Society_details_home_page(models.Model):
     official_contact_number = models.CharField(max_length=1000)
     posession = models.BooleanField(default=False)
     posession_date = models.DateTimeField(default=datetime.now, blank=True)
-    description_and_details_1 = RichTextField()
-    description_and_details_2 = RichTextField()
+    description_and_details_1 = RichTextField(blank=True, null=True)
+    description_and_details_2 = RichTextField(blank=True, null=True)
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
@@ -412,7 +412,7 @@ class Society_details_home_page(models.Model):
 
     class Meta:
         verbose_name = "18. Society Detail Home Page"
-        unique_together = ('society', 'society_youtube_videos', 'society_home_page_images')
+        unique_together = ('society',)
 
     def img_preview(self):  # new
         return mark_safe('<img src = "{url}" width = "300"/>'.format(
@@ -446,8 +446,8 @@ class Society_phase_details_home_page(models.Model):
     official_contact_number = models.CharField(max_length=1000)
     posession = models.BooleanField(default=False)
     posession_date = models.DateTimeField(default=datetime.now, blank=True)
-    description_and_details_1 = RichTextField()
-    description_and_details_2 = RichTextField()
+    description_and_details_1 = RichTextField(blank=True, null=True)
+    description_and_details_2 = RichTextField(blank=True, null=True)
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
@@ -458,7 +458,7 @@ class Society_phase_details_home_page(models.Model):
 
     class Meta:
         verbose_name = "19. Society Phase Detail Home Page"
-        unique_together=('society','society_phase_youtube_videos','society_phase_home_page_images','society_phase')
+        unique_together=('society','society_phase')
 
     def img_preview(self):  # new
         return mark_safe('<img src = "{url}" width = "300"/>'.format(
