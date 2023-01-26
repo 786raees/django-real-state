@@ -46,6 +46,7 @@ def society(request, id):
 def society_main_page(request, id):
   city_data = city.objects.order_by('-list_date').filter(is_published=True)
   society_id = Society.objects.filter(id=id).first()
+  society_transfer_office= Socity_transfer_office.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   society_main = Society_details_home_page.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   society_plot_table_data = Plot_details_table.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   latest_news = Socity_latest_news.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
@@ -63,6 +64,7 @@ def society_main_page(request, id):
     total_society_rating = 0
 
   context = {
+    'society_transfer_offices':society_transfer_office,
     'total_society_rating':total_society_rating,
     'society_ratings':society_rating,
     'city_dropdown':city_data,
@@ -81,6 +83,7 @@ def society_phase_page(request, id_society,id_phase):
   city_data = city.objects.order_by('-list_date').filter(is_published=True)
   society_id = Society.objects.filter(id=id_society).first()
   phase_id = Socity_phase.objects.filter(id=id_phase).first()
+  society_transfer_office= Socity_transfer_office.objects.order_by('-list_date').filter(is_published=True).filter(society_phase=phase_id)
   phase_main = Society_phase_details_home_page.objects.order_by('-list_date').filter(is_published=True)\
     .filter(society=society_id).filter(society_phase=phase_id)
   phase_plot_table_data = Plot_phase_details_table.objects.order_by('-list_date').filter(is_published=True)\
@@ -94,6 +97,7 @@ def society_phase_page(request, id_society,id_phase):
     total_rate = total_rate + rate.rate
   total_phase_rating = total_rate/total_rating
   context = {
+    'society_transfer_offices': society_transfer_office,
     'total_phase_rating': total_phase_rating,
     'phase_ratings': phase_rating,
     'city_dropdown':city_data,

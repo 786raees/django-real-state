@@ -2,6 +2,17 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import *
 
+class SocityTransferOfficeAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'society','society_phase','office_name','office_contact_no','office_address','office_google_map','description_and_details')
+  list_display_links = ('id', )
+  list_filter = ('society',)
+  list_editable = ('is_published','society','society_phase','office_name','office_contact_no','office_address','office_google_map','description_and_details')
+  search_fields = ('society','society_phase',)
+  list_per_page = 25
+
+admin.site.register(Socity_transfer_office, SocityTransferOfficeAdmin)
+
+
 class PlotTypesAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'title')
   list_display_links = ('id', )

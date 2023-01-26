@@ -279,6 +279,26 @@ class Socity_tags(models.Model):
     class Meta:
         verbose_name = "13. Society Tag"
 
+
+class Socity_transfer_office(models.Model):
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
+    office_name = models.CharField(max_length=200)
+    office_contact_no = models.CharField(max_length=200)
+    office_address = models.CharField(max_length=1000)
+    office_google_map = models.CharField(max_length=1000)
+    description_and_details = RichTextField(blank=True, null=True)
+    is_published = models.BooleanField(default=True)
+    list_date = models.DateTimeField(default=datetime.now, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        return str(self.office_name) +' '+str(self.society)+' '+str(self.society_phase)
+
+    class Meta:
+        verbose_name = "21. Society Transfer Office"
+
 class Socity_Rating(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
@@ -377,7 +397,7 @@ class Society_details_home_page(models.Model):
     launch_date = models.DateTimeField(default=datetime.now, blank=True)
     approvals = models.CharField(max_length=1000)
     facilities = models.CharField(max_length=2000)
-    transfer_charges = models.CharField(max_length=2000)
+    transfer_charges = RichTextField(blank=True, null=True)
     transfer_office = models.CharField(max_length=2000)
     location_on_map = models.CharField(max_length=1000)
     society_location = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -418,7 +438,7 @@ class Society_phase_details_home_page(models.Model):
     secuirty_facilities = models.BooleanField(default=True)
     sav_facilities = models.BooleanField(default=True)
     electricity_facilities = models.BooleanField(default=True)
-    transfer_charges = models.CharField(max_length=2000)
+    transfer_charges = RichTextField(blank=True, null=True)
     transfer_office = models.CharField(max_length=2000)
     location_on_map = models.CharField(max_length=1000)
     society_location = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
