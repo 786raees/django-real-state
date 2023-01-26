@@ -12,6 +12,18 @@
     .dot{height: 6px;width: 6px;margin-left: 3px;
           margin-right: 3px;margin-top: 2px !important;
           background-color: rgb(207,23,23);border-radius: 50%;display: inline-block}
+
+           table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
     </style>
 
     {% if society_mains %}
@@ -233,7 +245,7 @@
           </div>
    {% endfor %}
 {#   table#}
-<div class="card mb-4 mt-5">
+<div class="card mb-4 mt-5" style="overflow-x:auto;">
     <div class="card-header">
         <div class="card-heading">Daily Price Update Chart</div>
     </div>
