@@ -39,8 +39,6 @@ class SocityStatusAdmin(admin.ModelAdmin):
   search_fields = ('title',)
   list_per_page = 25
 
-# admin.site.register(Socity_Status, SocityStatusAdmin)
-
 @admin.register(Plot_category)
 class PlotCategoryAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'title')
@@ -49,9 +47,6 @@ class PlotCategoryAdmin(admin.ModelAdmin):
   list_editable = ('is_published','title')
   search_fields = ('title',)
   list_per_page = 25
-
-# admin.site.register(Plot_category, PlotCategoryAdmin)
-
 
 @admin.register(Socity_phase)
 class SocityPhaseAdmin(admin.ModelAdmin):
@@ -62,8 +57,6 @@ class SocityPhaseAdmin(admin.ModelAdmin):
   search_fields = ('title',)
   list_per_page = 25
 
-# admin.site.register(Socity_phase, SocityPhaseAdmin)
-
 @admin.register(Socity_Sector)
 class SocitySectorAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'title')
@@ -73,8 +66,6 @@ class SocitySectorAdmin(admin.ModelAdmin):
   search_fields = ('title',)
   list_per_page = 25
 
-# admin.site.register(Socity_Sector, SocitySectorAdmin)
-
 @admin.register(Socity_tags)
 class SocityTagsAdmin(admin.ModelAdmin):
   list_display = ('id','is_published','society', 'title')
@@ -83,8 +74,6 @@ class SocityTagsAdmin(admin.ModelAdmin):
   list_editable = ('is_published','society','title')
   search_fields = ('title',)
   list_per_page = 25
-
-# admin.site.register(Socity_tags, SocityTagsAdmin)
 
 @admin.register(Socity_latest_news)
 class SocityLatestNewsAdmin(admin.ModelAdmin):
@@ -107,7 +96,6 @@ class CityAdmin(admin.ModelAdmin):
   def image_tag(self, obj):
     return format_html(f'<img src="{obj.photo_main.url}" style="max-width:200px; max-height:200px"/>')
 
-
 @admin.register(Socity_Rating)
 class SocityRatingAdmin(admin.ModelAdmin):
   list_display = ('id','is_published','society','society_phase','comment','rate')
@@ -116,9 +104,6 @@ class SocityRatingAdmin(admin.ModelAdmin):
   list_editable = ('is_published','society','society_phase','comment','rate')
   search_fields = ('rate','comment')
   list_per_page = 25
-
-
-# admin.site.register(Socity_Rating, SocityRatingAdmin)
 
 @admin.register(Society)
 class SocietyAdmin(admin.ModelAdmin):
@@ -129,7 +114,6 @@ class SocietyAdmin(admin.ModelAdmin):
   search_fields = ('title',)
   list_per_page = 25
 
-
 @admin.register(Socity_phase_Sector)
 class SocietyPhaseSectorAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'society','society_phase','society_sector',)
@@ -138,7 +122,6 @@ class SocietyPhaseSectorAdmin(admin.ModelAdmin):
   list_editable = ('is_published','society','society_phase','society_sector')
   search_fields = ('society_sector',)
   list_per_page = 25
-
 
 @admin.register(Society_Youtube_videos)
 class SocityYoutubeAdmin(admin.ModelAdmin):
@@ -158,7 +141,6 @@ class SocityPhaseYoutubeAdmin(admin.ModelAdmin):
   search_fields = ('title',)
   list_per_page = 25
 
-
 @admin.register(Society_Home_Page_Images)
 class SocityHomePageImageAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'society','title','photo_main','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10')
@@ -167,8 +149,6 @@ class SocityHomePageImageAdmin(admin.ModelAdmin):
   list_editable = ('is_published','society','title','photo_main','photo_1','photo_2','photo_3','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10')
   search_fields = ('title',)
   list_per_page = 25
-
-
 
 @admin.register(Society_Phase_Home_Page_Images)
 class SocityPhaseHomePageImageAdmin(admin.ModelAdmin):
@@ -179,7 +159,6 @@ class SocityPhaseHomePageImageAdmin(admin.ModelAdmin):
   search_fields = ('title',)
   list_per_page = 25
 
-
 @admin.register(Owner_Contact_Us)
 class OwnerContactUsAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'title','location','phone_number','Mobile_number','whatsapp_number','fb_id','instagram_id','gmail_id','linkedin_id')
@@ -188,7 +167,6 @@ class OwnerContactUsAdmin(admin.ModelAdmin):
   list_editable = ('is_published','title','location','phone_number','Mobile_number','whatsapp_number','fb_id','instagram_id','gmail_id','linkedin_id')
   search_fields = ('location',)
   list_per_page = 25
-
 
 @admin.register(Listing)
 class ListingAdmin(admin.ModelAdmin):
@@ -201,7 +179,6 @@ class ListingAdmin(admin.ModelAdmin):
   search_fields = ('title', 'description', 'address', 'price')
   list_per_page = 25
 
-
 @admin.register(Plot_details_table)
 class PlotDetailsTableAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'society', 'dimension','plot_type','society_phase','plot_category',
@@ -213,9 +190,6 @@ class PlotDetailsTableAdmin(admin.ModelAdmin):
   search_fields = ('society',)
   list_per_page = 25
 
-
-
-
 @admin.register(Plot_phase_details_table)
 class PlotPhaseDetailsTableAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
@@ -226,7 +200,6 @@ class PlotPhaseDetailsTableAdmin(admin.ModelAdmin):
                   'block', 'price', 'contact', 'remarks')
   search_fields = ('society','society_phase')
   list_per_page = 25
-
 
 @admin.register(Society_details_home_page)
 class SocietyDetailsHomePageAdmin(admin.ModelAdmin):
