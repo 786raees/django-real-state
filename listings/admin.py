@@ -1,7 +1,15 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group
+from django.contrib.auth import get_user_model
 from django.utils.html import format_html
 from .models import *
 
+User = get_user_model()
+# unregister the default user and group models from admin panel
+admin.site.unregister(User)
+admin.site.unregister(Group)
+
+@admin.register(Socity_transfer_office)
 class SocityTransferOfficeAdmin(admin.ModelAdmin):
   list_display = ('id','is_published', 'society','society_phase','office_name','office_contact_no','office_address','office_google_map','description_and_details')
   list_display_links = ('id', )
@@ -10,7 +18,7 @@ class SocityTransferOfficeAdmin(admin.ModelAdmin):
   search_fields = ('society','society_phase',)
   list_per_page = 25
 
-admin.site.register(Socity_transfer_office, SocityTransferOfficeAdmin)
+# admin.site.register(Socity_transfer_office, SocityTransferOfficeAdmin)
 
 
 class PlotTypesAdmin(admin.ModelAdmin):
