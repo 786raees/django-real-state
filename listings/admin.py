@@ -4,12 +4,38 @@ from django.contrib.auth import get_user_model
 from django.utils.html import format_html
 from .models import *
 
-User = get_user_model()
 # unregister the default user and group models from admin panel
+User = get_user_model()
 admin.site.unregister(User)
 admin.site.unregister(Group)
 
+class SocietyInline(admin.StackedInline):
+  model = Society
+  extra = 0
 
+class Society_Youtube_videosInline(admin.StackedInline):
+  model = Society_Youtube_videos
+  extra = 0
+
+class Society_Home_Page_ImagesInline(admin.StackedInline):
+  model = Society_Home_Page_Images
+  extra = 0
+
+class Socity_phase_SectorInline(admin.StackedInline):
+  model = Socity_phase_Sector
+  extra = 0
+
+class Socity_latest_newsInline(admin.StackedInline):
+  model = Socity_latest_news
+  extra = 0
+
+class Socity_tagsInline(admin.StackedInline):
+  model = Socity_tags
+  extra = 0
+
+class Socity_transfer_officeInline(admin.StackedInline):
+  model = Socity_transfer_office
+  extra = 0
 
 @admin.register(Socity_transfer_office)
 class SocityTransferOfficeAdmin(admin.ModelAdmin):
@@ -19,7 +45,6 @@ class SocityTransferOfficeAdmin(admin.ModelAdmin):
   list_editable = ('is_published','society','society_phase','office_name','office_contact_no','office_address','office_google_map','description_and_details')
   search_fields = ('society','society_phase',)
   list_per_page = 25
-
 
 @admin.register(Plot_types)
 class PlotTypesAdmin(admin.ModelAdmin):
@@ -90,6 +115,7 @@ class CityAdmin(admin.ModelAdmin):
   list_display_links = ('id',)
   list_filter = ('title',)
   list_editable = ('is_published','title','photo_main')
+  inlines = (SocietyInline,)
   search_fields = ('title',)
   list_per_page = 25
 
@@ -112,6 +138,11 @@ class SocietyAdmin(admin.ModelAdmin):
   list_filter = ('title',)
   list_editable = ('is_published','title','photo_main','address','city', 'state',)
   search_fields = ('title',)
+  inlines = (
+            Society_Youtube_videosInline,Society_Home_Page_ImagesInline, Socity_phase_SectorInline,
+            Socity_latest_newsInline,
+            Socity_tagsInline,
+          )
   list_per_page = 25
 
 @admin.register(Socity_phase_Sector)
