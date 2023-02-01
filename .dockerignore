@@ -1,0 +1,9 @@
+.idea
+.vscode
+venv
+postgresql
+__pycache__
+*.pyc
+.git
+*.md
+click.py
