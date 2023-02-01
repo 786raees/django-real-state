@@ -7,6 +7,7 @@ from  embed_video.fields  import  EmbedVideoField
 from ckeditor.fields import RichTextField
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Upper
+
 rating_choices = (
     (0,0),
     (1,1),
@@ -14,8 +15,8 @@ rating_choices = (
     (3,3),
     (4,4),
     (5,5),
-
 )
+
 class city(models.Model):
     title = models.CharField(max_length=200, unique=True)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
@@ -29,6 +30,7 @@ class city(models.Model):
 
     class Meta:
         verbose_name = "00. Society City"
+
 class Society(models.Model):
     city = models.ForeignKey(city, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -62,11 +64,10 @@ class Society_Youtube_videos(models.Model):
     updated_at= models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return str(self.society.title) + 'Society Youtube Videos'
+        return f'{self.society.title} Society Youtube Videos'
 
     class Meta:
         verbose_name = "02. Society Youtube Videos"
-
 
 class Owner_Contact_Us(models.Model):
     title = models.CharField(max_length=2000, blank=True)
@@ -88,6 +89,7 @@ class Owner_Contact_Us(models.Model):
 
     class Meta:
         verbose_name = "03. Owner Contact Us"
+
 class Society_Home_Page_Images(models.Model):
     society = models.OneToOneField(Society, on_delete=models.CASCADE, default=None, unique=True)
     title = models.CharField(max_length=200)
@@ -113,7 +115,6 @@ class Society_Home_Page_Images(models.Model):
     class Meta:
         verbose_name = "04. Society Home Page Images"
 
-
 class Plot_types(models.Model):
     title = models.CharField(max_length=200)
     is_published = models.BooleanField(default=True)
@@ -127,7 +128,6 @@ class Plot_types(models.Model):
     class Meta:
         verbose_name = "05. Plot Type"
 
-
 class Plot_category(models.Model):
     title = models.CharField(max_length=200)
     is_published = models.BooleanField(default=True)
@@ -140,7 +140,6 @@ class Plot_category(models.Model):
 
     class Meta:
         verbose_name = "06. Plot Category"
-
 
 class Socity_phase(models.Model):
     title = models.CharField(max_length=200)
@@ -167,6 +166,7 @@ class Socity_Sector(models.Model):
 
     class Meta:
         verbose_name = "12. Society Sector"
+
 class Socity_phase_Sector(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
@@ -205,8 +205,6 @@ class Society_Phase_Youtube_videos(models.Model):
         verbose_name = "08. Society Phase Youtube Videos"
         unique_together = ('society', 'society_phase',)
 
-
-
 class Society_Phase_Home_Page_Images(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
@@ -228,7 +226,7 @@ class Society_Phase_Home_Page_Images(models.Model):
     updated_at= models.DateTimeField(auto_now=True, blank=True)
 
     def __str__(self):
-        return str(self.society.title) + ' Images of '+ str(self.society_phase.title)
+        return f'{str(self.society.title)} Images of {str(self.society_phase.title)}'
 
     class Meta:
         verbose_name = "09. Society Phase Home Page Images"
@@ -263,8 +261,6 @@ class Socity_Status(models.Model):
     class Meta:
         verbose_name = "11. Society Status"
 
-
-
 class Socity_tags(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=200)
@@ -278,6 +274,25 @@ class Socity_tags(models.Model):
 
     class Meta:
         verbose_name = "13. Society Tag"
+
+class Socity_transfer_office(models.Model):
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
+    office_name = models.CharField(max_length=200)
+    office_contact_no = models.CharField(max_length=200)
+    office_address = models.CharField(max_length=1000)
+    office_google_map = models.CharField(max_length=1000)
+    description_and_details = RichTextField(blank=True, null=True)
+    is_published = models.BooleanField(default=True)
+    list_date = models.DateTimeField(default=datetime.now, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        return str(self.office_name) +' '+str(self.society)+' '+str(self.society_phase)
+
+    class Meta:
+        verbose_name = "21. Society Transfer Office"
 
 class Socity_Rating(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
@@ -294,6 +309,7 @@ class Socity_Rating(models.Model):
 
     class Meta:
         verbose_name = "14. Society Rating"
+
 class Listing(models.Model):
     socity_phase_sector = models.ForeignKey(Socity_phase_Sector, on_delete=models.CASCADE, default=None)
     title = models.CharField(max_length=200)
@@ -367,6 +383,7 @@ class Plot_phase_details_table(models.Model):
 
     class Meta:
         verbose_name = "17. Plot Detail Table Society Phase"
+
 class Society_details_home_page(models.Model):
     title = models.CharField(max_length=2000, blank=True)
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
@@ -377,7 +394,7 @@ class Society_details_home_page(models.Model):
     launch_date = models.DateTimeField(default=datetime.now, blank=True)
     approvals = models.CharField(max_length=1000)
     facilities = models.CharField(max_length=2000)
-    transfer_charges = models.CharField(max_length=2000)
+    transfer_charges = RichTextField(blank=True, null=True)
     transfer_office = models.CharField(max_length=2000)
     location_on_map = models.CharField(max_length=1000)
     society_location = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -400,8 +417,6 @@ class Society_details_home_page(models.Model):
         verbose_name = "18. Society Detail Home Page"
         unique_together = ('society',)
 
-
-
 class Society_phase_details_home_page(models.Model):
     title = models.CharField(max_length=2000, blank=True)
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
@@ -418,7 +433,7 @@ class Society_phase_details_home_page(models.Model):
     secuirty_facilities = models.BooleanField(default=True)
     sav_facilities = models.BooleanField(default=True)
     electricity_facilities = models.BooleanField(default=True)
-    transfer_charges = models.CharField(max_length=2000)
+    transfer_charges = RichTextField(blank=True, null=True)
     transfer_office = models.CharField(max_length=2000)
     location_on_map = models.CharField(max_length=1000)
     society_location = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)

@@ -3,3 +3,4 @@ __pycache__
 click.py
 postgresql/data/*
 !postgresql/data/
+*.pyc
