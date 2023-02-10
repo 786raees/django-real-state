@@ -46,33 +46,35 @@ def society(request, id):
 def society_main_page(request, id):
   city_data = city.objects.order_by('-list_date').filter(is_published=True)
   society_id = Society.objects.filter(id=id).first()
-  society_transfer_office= Socity_transfer_office.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
-  society_main = Society_details_home_page.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
-  society_plot_table_data = Plot_details_table.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
-  latest_news = Socity_latest_news.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
+  society_desc = Society.objects.filter(id=id)
+  # society_transfer_office= Socity_transfer_office.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
+  # society_main = Society_details_home_page.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
+  # society_plot_table_data = Plot_details_table.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
+  # latest_news = Socity_latest_news.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   society_phases = Society_phase_details_home_page.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   society_tags = Socity_tags.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
   society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
-  society_rating = Socity_Rating.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
-  total_rating = len(society_rating)
-  total_rate = 0
-  try:
-    for rate in society_rating:
-      total_rate = total_rate + rate.rate
-    total_society_rating = total_rate/total_rating
-  except:
-    total_society_rating = 0
+  # society_rating = Socity_Rating.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id)
+  # total_rating = len(society_rating)
+  # total_rate = 0
+  # try:
+  #   for rate in society_rating:
+  #     total_rate = total_rate + rate.rate
+  #   total_society_rating = total_rate/total_rating
+  # except:
+  #   total_society_rating = 0
 
   context = {
-    'society_transfer_offices':society_transfer_office,
-    'total_society_rating':total_society_rating,
-    'society_ratings':society_rating,
+    # 'society_transfer_offices':society_transfer_office,
+    # 'total_society_rating':total_society_rating,
+    # 'society_ratings':society_rating,
     'city_dropdown':city_data,
-      'society_mains': society_main,
+    #   'society_mains': society_main,
       'state_choices': state_choices,
+    'society_desc': society_desc,
       'society_id': society_id.id,
-      'society_plot_table_datas':society_plot_table_data,
-    'latest_news':latest_news,
+      # 'society_plot_table_datas':society_plot_table_data,
+    # 'latest_news':latest_news,
     'society_phases':society_phases,
     'society_tags':society_tags,
     'society_dropdowns': society_dropdown
@@ -93,9 +95,12 @@ def society_phase_page(request, id_society,id_phase):
   phase_rating = Socity_Rating.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id).filter(society_phase=phase_id)
   total_rating = len(phase_rating)
   total_rate = 0
-  for rate in phase_rating:
-    total_rate = total_rate + rate.rate
-  total_phase_rating = total_rate/total_rating
+  try:
+    for rate in phase_rating:
+      total_rate = total_rate + rate.rate
+    total_phase_rating = total_rate/total_rating
+  except:
+    total_phase_rating = 0
   context = {
     'society_transfer_offices': society_transfer_office,
     'total_phase_rating': total_phase_rating,

@@ -29,7 +29,7 @@ class city(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "00. Society City"
+        verbose_name = "01. Society City"
 
 class Society(models.Model):
     city = models.ForeignKey(city, on_delete=models.CASCADE)
@@ -38,6 +38,7 @@ class Society(models.Model):
     state = models.CharField(max_length=100)
     zipcode = models.CharField(max_length=20)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
+    description = RichTextField(blank=True, null=True)
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
     created_at= models.DateTimeField(auto_now_add=True, blank=True)
@@ -47,7 +48,7 @@ class Society(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "01. Society Name"
+        verbose_name = "02. Society Name"
 
 class Society_Youtube_videos(models.Model):
     society = models.OneToOneField(Society, on_delete=models.CASCADE, default=None, unique=True)
@@ -88,7 +89,7 @@ class Owner_Contact_Us(models.Model):
         return str(self.title) +' Contacts Information'
 
     class Meta:
-        verbose_name = "03. Owner Contact Us"
+        verbose_name = "00. Owner Contact Us"
 
 class Society_Home_Page_Images(models.Model):
     society = models.OneToOneField(Society, on_delete=models.CASCADE, default=None, unique=True)
@@ -180,7 +181,7 @@ class Socity_phase_Sector(models.Model):
         return str(self.society) +' '+str(self.society_phase) + ' '+ str(self.society_sector)
 
     class Meta:
-        verbose_name = "20. Society Phase and Sector"
+        verbose_name = "15. Society Phase and Sector"
         unique_together = ('society', 'society_phase','society_sector')
 
 class Society_Phase_Youtube_videos(models.Model):
@@ -259,7 +260,7 @@ class Socity_Status(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "11. Society Status"
+        verbose_name = "03. Society Status"
 
 class Socity_tags(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
@@ -292,7 +293,7 @@ class Socity_transfer_office(models.Model):
         return str(self.office_name) +' '+str(self.society)+' '+str(self.society_phase)
 
     class Meta:
-        verbose_name = "21. Society Transfer Office"
+        verbose_name = "11. Society Transfer Office"
 
 class Socity_Rating(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
@@ -308,7 +309,7 @@ class Socity_Rating(models.Model):
         return str(self.society.title) + ' and ' + str(self.society_phase.title) +' Rating'
 
     class Meta:
-        verbose_name = "14. Society Rating"
+        verbose_name = "04. Society Rating"
 
 class Listing(models.Model):
     socity_phase_sector = models.ForeignKey(Socity_phase_Sector, on_delete=models.CASCADE, default=None)
@@ -340,7 +341,7 @@ class Listing(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "15. Plot Listing"
+        verbose_name = "16. Plot Listing"
 
 class Plot_details_table(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE)
@@ -453,5 +454,5 @@ class Society_phase_details_home_page(models.Model):
         return self.society.title
 
     class Meta:
-        verbose_name = "19. Society Phase Detail Home Page"
+        verbose_name = "14. Society Phase Detail Home Page"
         unique_together=('society','society_phase')

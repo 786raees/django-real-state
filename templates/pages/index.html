@@ -6,36 +6,36 @@
 {% load static %}
 {% block content %}
 <!-- Showcase -->
-<section id="showcase" style="min-height: 403px !important;">
-    <div class="container text-center">
-
-
-      <div class="home-search p-5">
-          <img src="{% static 'img/search_image.png' %}" alt="" style="margin-top: -16%;">
-        <div class="overlay p-5">
-          <h1 class="display-4 mb-4" style="color: #000000">
-            Find your Dream Home, Office, Shop or Plot in Pakistan
-          </h1>
+{#<section id="showcase" style="min-height: 403px !important;">#}
+{#    <div class="container text-center">#}
+{##}
+{##}
+{#      <div class="home-search p-5">#}
+{#          <img src="{% static 'img/search_image.png' %}" alt="" style="margin-top: -16%;">#}
+{#        <div class="overlay p-5">#}
+{#          <h1 class="display-4 mb-4" style="color: #000000">#}
+{#            Find your Dream Home, Office, Shop or Plot in Pakistan#}
+{#          </h1>#}
 {#          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam#}
 {#            voluptatum tempore! Consectetur, id commodi!</p>#}
-          <div class="search">
-            <form action="{% url 'index' %}">
-              <!-- Form Row 1 -->
-              <div class="form-row">
-                <div class="col-md-12 mb-6">
-                  <label class="sr-only">Keywords</label>
-                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (name of the city)">
-                </div>
-
-              </div>
-              <button class="btn btn-dark btn-block mt-4" type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<br>
+{#          <div class="search">#}
+{#            <form action="{% url 'index' %}">#}
+{#              <!-- Form Row 1 -->#}
+{#              <div class="form-row">#}
+{#                <div class="col-md-12 mb-6">#}
+{#                  <label class="sr-only">Keywords</label>#}
+{#                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (name of the city)">#}
+{#                </div>#}
+{##}
+{#              </div>#}
+{#              <button class="btn btn-dark btn-block mt-4" type="submit">Submit</button>#}
+{#            </form>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </section>#}
+{#<br>#}
   <!-- Alerts -->
   {% include 'partials/_alerts.html' %}
 
@@ -77,14 +77,14 @@ span.lower-text {
         }
 </style>
 
-<div class="container" style="margin-top: -17%;">
-  <h2 class="text-center text-bold">City Details</h2>
+<div class="container">
+{#  <h2 class="text-center text-bold">City Details</h2>#}
         <div class="starter-template">
             <div class="row">
             {% if citys %}
                 {% for city in citys %}
-                <div class="col-sm-6">
-                    <section class="hover-div"> <a href="/listings/society/{{ city.id }}"> <img src="{{ city.photo_main.url }}" width="100%">
+                <div class="col-sm-4">
+                    <section class="hover-div"> <a href="/listings/society/{{ city.id }}"> <img style="border-radius: 10%" src="{{ city.photo_main.url }}" width="100%">
                         <div class="hover-div_inner"  style="margin-top: 10%;">
                             <h3><a class="lower-text" href="/listings/society/{{ city.id }}">{{ city.title }}</a></h3>
                         </div>

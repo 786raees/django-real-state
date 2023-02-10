@@ -21,9 +21,9 @@ class Society_Home_Page_ImagesInline(admin.StackedInline):
   model = Society_Home_Page_Images
   extra = 0
 
-class Socity_phase_SectorInline(admin.StackedInline):
-  model = Socity_phase_Sector
-  extra = 0
+# class Socity_phase_SectorInline(admin.StackedInline):
+#   model = Socity_phase_Sector
+#   extra = 0
 
 class Socity_latest_newsInline(admin.StackedInline):
   model = Socity_latest_news
@@ -133,13 +133,13 @@ class SocityRatingAdmin(admin.ModelAdmin):
 
 @admin.register(Society)
 class SocietyAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published', 'title','address','photo_main', 'city', 'state', 'zipcode',)
+  list_display = ('id','is_published', 'title','address','photo_main', 'city', 'state', 'zipcode','description')
   list_display_links = ('id',)
   list_filter = ('title',)
-  list_editable = ('is_published','title','photo_main','address','city', 'state',)
+  list_editable = ('is_published','title','photo_main','address','city', 'state','description')
   search_fields = ('title',)
   inlines = (
-            Society_Youtube_videosInline,Society_Home_Page_ImagesInline, Socity_phase_SectorInline,
+            Society_Youtube_videosInline,Society_Home_Page_ImagesInline,
             Socity_latest_newsInline,
             Socity_tagsInline,
           )
@@ -154,14 +154,14 @@ class SocietyPhaseSectorAdmin(admin.ModelAdmin):
   search_fields = ('society_sector',)
   list_per_page = 25
 
-@admin.register(Society_Youtube_videos)
-class SocityYoutubeAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published', 'society','yut_video_1','yut_video_2','yut_video_3','yut_video_4','yut_video_5','yut_video_6',)
-  list_display_links = ('id',)
-  list_filter = ('title',)
-  list_editable = ('is_published','society','yut_video_1','yut_video_2','yut_video_3','yut_video_4','yut_video_5','yut_video_6',)
-  search_fields = ('title',)
-  list_per_page = 25
+# @admin.register(Society_Youtube_videos)
+# class SocityYoutubeAdmin(admin.ModelAdmin):
+#   list_display = ('id','is_published', 'society','yut_video_1','yut_video_2','yut_video_3','yut_video_4','yut_video_5','yut_video_6',)
+#   list_display_links = ('id',)
+#   list_filter = ('title',)
+#   list_editable = ('is_published','society','yut_video_1','yut_video_2','yut_video_3','yut_video_4','yut_video_5','yut_video_6',)
+#   search_fields = ('title',)
+#   list_per_page = 25
 
 @admin.register(Society_Phase_Youtube_videos)
 class SocityPhaseYoutubeAdmin(admin.ModelAdmin):
@@ -172,14 +172,14 @@ class SocityPhaseYoutubeAdmin(admin.ModelAdmin):
   search_fields = ('title',)
   list_per_page = 25
 
-@admin.register(Society_Home_Page_Images)
-class SocityHomePageImageAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published', 'society','title','photo_main','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10')
-  list_display_links = ('id',)
-  list_filter = ('title',)
-  list_editable = ('is_published','society','title','photo_main','photo_1','photo_2','photo_3','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10')
-  search_fields = ('title',)
-  list_per_page = 25
+# @admin.register(Society_Home_Page_Images)
+# class SocityHomePageImageAdmin(admin.ModelAdmin):
+#   list_display = ('id','is_published', 'society','title','photo_main','photo_1','photo_2','photo_3','photo_4','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10')
+#   list_display_links = ('id',)
+#   list_filter = ('title',)
+#   list_editable = ('is_published','society','title','photo_main','photo_1','photo_2','photo_3','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10')
+#   search_fields = ('title',)
+#   list_per_page = 25
 
 @admin.register(Society_Phase_Home_Page_Images)
 class SocityPhaseHomePageImageAdmin(admin.ModelAdmin):
@@ -210,42 +210,42 @@ class ListingAdmin(admin.ModelAdmin):
   search_fields = ('title', 'description', 'address', 'price')
   list_per_page = 25
 
-@admin.register(Plot_details_table)
-class PlotDetailsTableAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published', 'society', 'dimension','plot_type','society_phase','plot_category',
-                  'block', 'price', 'contact', 'remarks',)
-  list_display_links = ('id',)
-  list_filter = ('society',)
-  list_editable = ('is_published', 'society', 'dimension','plot_type','plot_category',
-                  'block', 'price', 'contact','society_phase', 'remarks',)
-  search_fields = ('society',)
-  list_per_page = 25
+# @admin.register(Plot_details_table)
+# class PlotDetailsTableAdmin(admin.ModelAdmin):
+#   list_display = ('id','is_published', 'society', 'dimension','plot_type','society_phase','plot_category',
+#                   'block', 'price', 'contact', 'remarks',)
+#   list_display_links = ('id',)
+#   list_filter = ('society',)
+#   list_editable = ('is_published', 'society', 'dimension','plot_type','plot_category',
+#                   'block', 'price', 'contact','society_phase', 'remarks',)
+#   search_fields = ('society',)
+#   list_per_page = 25
 
-@admin.register(Plot_phase_details_table)
-class PlotPhaseDetailsTableAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
-                  'block', 'price', 'contact', 'remarks')
-  list_display_links = ('id',)
-  list_filter = ('society','society_phase')
-  list_editable = ('is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
-                  'block', 'price', 'contact', 'remarks')
-  search_fields = ('society','society_phase')
-  list_per_page = 25
+# @admin.register(Plot_phase_details_table)
+# class PlotPhaseDetailsTableAdmin(admin.ModelAdmin):
+#   list_display = ('id','is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
+#                   'block', 'price', 'contact', 'remarks')
+#   list_display_links = ('id',)
+#   list_filter = ('society','society_phase')
+#   list_editable = ('is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
+#                   'block', 'price', 'contact', 'remarks')
+#   search_fields = ('society','society_phase')
+#   list_per_page = 25
 
-@admin.register(Society_details_home_page)
-class SocietyDetailsHomePageAdmin(admin.ModelAdmin):
-  list_display = ('id','title', 'society', 'is_published', 'plot_types', 'society_status','launch_date','approvals','download_location_file',
-                  'facilities','transfer_charges','transfer_office','location_on_map','society_location',
-                  'official_website','official_contact_number','posession','posession_date','description_and_details_1',
-                  'description_and_details_2')
-  list_display_links = ('id',)
-  list_filter = ('society',)
-  list_editable = ('title','society', 'is_published', 'plot_types', 'society_status','launch_date','approvals','download_location_file',
-                  'facilities','transfer_charges','transfer_office','location_on_map','society_location',
-                  'official_website','official_contact_number','posession','posession_date','description_and_details_1',
-                   'description_and_details_2')
-  search_fields = ('society', 'description',)
-  list_per_page = 25
+# @admin.register(Society_details_home_page)
+# class SocietyDetailsHomePageAdmin(admin.ModelAdmin):
+#   list_display = ('id','title', 'society', 'is_published', 'plot_types', 'society_status','launch_date','approvals','download_location_file',
+#                   'facilities','transfer_charges','transfer_office','location_on_map','society_location',
+#                   'official_website','official_contact_number','posession','posession_date','description_and_details_1',
+#                   'description_and_details_2')
+#   list_display_links = ('id',)
+#   list_filter = ('society',)
+#   list_editable = ('title','society', 'is_published', 'plot_types', 'society_status','launch_date','approvals','download_location_file',
+#                   'facilities','transfer_charges','transfer_office','location_on_map','society_location',
+#                   'official_website','official_contact_number','posession','posession_date','description_and_details_1',
+#                    'description_and_details_2')
+#   search_fields = ('society', 'description',)
+#   list_per_page = 25
 
 
 
