@@ -437,7 +437,6 @@ class Society_phase_details_home_page(models.Model):
     transfer_office = models.CharField(max_length=2000)
     location_on_map = models.CharField(max_length=1000)
     society_location = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    download_location_file = models.FileField(upload_to='locationMap/%Y/%m/%d/', blank=True)
     official_website = models.CharField(max_length=1000)
     official_contact_number = models.CharField(max_length=1000)
     posession = models.BooleanField(default=False)
@@ -455,3 +454,40 @@ class Society_phase_details_home_page(models.Model):
     class Meta:
         verbose_name = "14. Society Phase Detail Home Page"
         unique_together=('society','society_phase')
+
+
+
+class Socity_phase_maps(models.Model):
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
+    title = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000, blank=True)
+    map = models.FileField(upload_to='locationMap/%Y/%m/%d/', blank=True)
+    is_published = models.BooleanField(default=True)
+    list_date = models.DateTimeField(default=datetime.now, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        return str(self.society.title) + 'and' + str(self.society_phase.title) +' Map'
+
+    class Meta:
+        verbose_name = "10. Society Phase Map"
+
+
+class Socity_phase_other_documents_download(models.Model):
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
+    title = models.CharField(max_length=1000)
+    description = models.CharField(max_length=5000, blank=True)
+    document = models.FileField(upload_to='locationMap/%Y/%m/%d/', blank=True)
+    is_published = models.BooleanField(default=True)
+    list_date = models.DateTimeField(default=datetime.now, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        return str(self.society.title) + 'and' + str(self.society_phase.title) +' Download Other Documents'
+
+    class Meta:
+        verbose_name = "10. Society Phase Other Documents"

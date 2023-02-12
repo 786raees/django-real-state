@@ -251,16 +251,37 @@ class ListingAdmin(admin.ModelAdmin):
 
 @admin.register(Society_phase_details_home_page)
 class SocietyPhaseDetailsHomePageAdmin(admin.ModelAdmin):
-  list_display = ('id','title', 'society', 'is_published', 'plot_types','society_phase', 'society_status','launch_date','approvals','download_location_file',
+  list_display = ('id','title', 'society', 'is_published', 'plot_types','society_phase', 'society_status','launch_date','approvals',
                   'gas_facilities','water_facilities','mantaince_facilities','secuirty_facilities','sav_facilities','electricity_facilities','transfer_charges','transfer_office','location_on_map','society_location',
                   'official_website','official_contact_number','posession','posession_date','description_and_details_1',
                   'description_and_details_2')
   list_display_links = ('id',)
   list_filter = ('society',)
-  list_editable = ('title','society', 'is_published', 'plot_types','society_phase', 'society_status','launch_date','approvals','download_location_file',
+  list_editable = ('title','society', 'is_published', 'plot_types','society_phase', 'society_status','launch_date','approvals',
                   'gas_facilities','water_facilities','mantaince_facilities','secuirty_facilities','sav_facilities','electricity_facilities',
                    'transfer_charges','transfer_office','location_on_map','society_location',
                   'official_website','official_contact_number','posession','posession_date','description_and_details_1',
                    'description_and_details_2')
   search_fields = ('society', 'description',)
+  list_per_page = 25
+
+
+
+@admin.register(Socity_phase_maps)
+class SocietyPhaseSectorAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'society','society_phase','map','title','description')
+  list_display_links = ('id',)
+  list_filter = ('society_phase',)
+  list_editable = ('is_published','society','society_phase','map','title','description')
+  search_fields = ('society_phase','society')
+  list_per_page = 25
+
+
+@admin.register(Socity_phase_other_documents_download)
+class SocietyPhaseSectorAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'society','society_phase','document','title','description')
+  list_display_links = ('id',)
+  list_filter = ('society_phase',)
+  list_editable = ('is_published','society','society_phase','document','title','description')
+  search_fields = ('society_phase','society')
   list_per_page = 25

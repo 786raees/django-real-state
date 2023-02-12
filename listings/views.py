@@ -93,6 +93,9 @@ def society_phase_page(request, id_society,id_phase):
   latest_news = Socity_latest_news.objects.order_by('-list_date').filter(is_published=True).filter(society_phase=phase_id)
   society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
   phase_rating = Socity_Rating.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id).filter(society_phase=phase_id)
+  socity_phase_maps = Socity_phase_maps.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id).filter(society_phase=phase_id)
+  socity_phase_other_documents = Socity_phase_other_documents_download.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id).filter(society_phase=phase_id)
+
   total_rating = len(phase_rating)
   total_rate = 0
   try:
@@ -111,7 +114,9 @@ def society_phase_page(request, id_society,id_phase):
       'society_id': society_id.id,
       'phase_plot_table_datas':phase_plot_table_data,
     'latest_news':latest_news,
-    'society_dropdowns':society_dropdown
+    'society_dropdowns':society_dropdown,
+    'socity_phase_maps':socity_phase_maps,
+    'socity_phase_other_documents':socity_phase_other_documents
     }
   return render(request, 'listings/phase_main_page.html', context)
 def listing(request, listing_id):
