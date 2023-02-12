@@ -296,60 +296,94 @@ th, td {
             </div>
 
 
-<div class="col-md-12">
+            <div class="col-md-12">
               <ul class="list-group list-group-flush">
                                   <li class="list-group-item text-secondary">
-                  <i class="fas fa-bath"></i> Approvals:
-                  <span class="float-right">{{ phase_main.approvals }}</span>
+                  <i class="fas fa-bath"></i> Approvals:&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span class="">
+                      {% for socity_phase_approved_from in socity_phase_approved_froms %}
+                      <a class="badge badge-primary" style="color: white" >{{socity_phase_approved_from.title}}</a>
+                          {% endfor %}
+                  </span>
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-child"></i> Facilities:
                   <span class="float-right">
                   Available:&#9989;
                       {% if phase_main.gas_facilities %}
-                        Gas
+                          <a class="badge badge-success" style="color: white" >Gas</a>
                       {% endif %}
                         {% if phase_main.water_facilities %}
-                        water
+                            <a class="badge badge-success" style="color: white" >water</a>
                       {% endif %}
                         {% if phase_main.mantaince_facilities %}
-                        Maintainer
+                        <a class="badge badge-success" style="color: white" >Maintainer</a>
                       {% endif %}
                         {% if phase_main.secuirty_facilities %}
-                        Security 24/7
+                        <a class="badge badge-success" style="color: white" >Security 24/7</a>
                       {% endif %}
                         {% if phase_main.sav_facilities %}
-                         Sav
+                         <a class="badge badge-success" style="color: white" >Sav</a>
                       {% endif %}
                   {% if phase_main.electricity_facilities %}
-                         Electricity
+                        <a class="badge badge-success" style="color: white" > Electricity</a>
+                      {% endif %}
+                  {% if phase_main.school_facilities %}
+                        <a class="badge badge-success" style="color: white" > School</a>
+                      {% endif %}
+                  {% if phase_main.hospital_facilities %}
+                        <a class="badge badge-success" style="color: white" > Hospital</a>
+                      {% endif %}
+                  {% if phase_main.internt_facilities %}
+                         <a class="badge badge-success" style="color: white" >Internet</a>
+                      {% endif %}
+                  {% if phase_main.telephone_facilities %}
+                       <a class="badge badge-success" style="color: white" >  Telephone</a>
+                      {% endif %}
+                  {% if phase_main.club_facilities %}
+                        <a class="badge badge-success" style="color: white" > Club</a>
                       {% endif %}
                   </span>
                 <br>
                 <span class="float-right">
                     Not Available:&#10060;
-                      {% if phase_main.gas_facilities %}
-                        Gas
+                      {% if not phase_main.gas_facilities %}
+                       <a class="badge badge-primary" style="color: white" > Gas</a>
                       {% endif %}
-                        {% if phase_main.water_facilities %}
-                        water
+                        {% if not phase_main.water_facilities %}
+                        <a class="badge badge-primary" style="color: white" >water</a>
                       {% endif %}
-                        {% if phase_main.mantaince_facilities %}
-                        Maintainer
+                        {% if not phase_main.mantaince_facilities %}
+                        <a class="badge badge-primary" style="color: white" >Maintainer</a>
                       {% endif %}
-                        {% if phase_main.secuirty_facilities %}
-                        Security 24/7
+                        {% if not phase_main.secuirty_facilities %}
+                        <a class="badge badge-primary" style="color: white" >Security 24/7</a>
                       {% endif %}
-                        {% if phase_main.sav_facilities %}
-                         Sav
+                        {% if not phase_main.sav_facilities %}
+                         <a class="badge badge-primary" style="color: white" >Sav</a>
                       {% endif %}
-                  {% if phase_main.electricity_facilities %}
-                         Electricity
+                  {% if not phase_main.electricity_facilities %}
+                         <a class="badge badge-primary" style="color: white" >Electricity</a>
+                      {% endif %}
+                  {% if not phase_main.school_facilities %}
+                         <a class="badge badge-primary" style="color: white" >School</a>
+                      {% endif %}
+                  {% if not phase_main.hospital_facilities %}
+                         <a class="badge badge-primary" style="color: white" >Hospital</a>
+                      {% endif %}
+                  {% if not phase_main.internt_facilities %}
+                         <a class="badge badge-primary" style="color: white" >Internet</a>
+                      {% endif %}
+                  {% if not phase_main.telephone_facilities %}
+                         <a class="badge badge-primary" style="color: white" >Telephone</a>
+                      {% endif %}
+                  {% if not phase_main.club_facilities %}
+                      <a class="badge badge-primary" style="color: white" >Club</a>
                       {% endif %}
                   </span>
                 </li>
               </ul>
-</div>
+            </div>
           </div>
 
                                   <!-- for Transfer Charges -->

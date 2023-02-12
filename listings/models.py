@@ -433,14 +433,18 @@ class Society_phase_details_home_page(models.Model):
     secuirty_facilities = models.BooleanField(default=True)
     sav_facilities = models.BooleanField(default=True)
     electricity_facilities = models.BooleanField(default=True)
+    school_facilities = models.BooleanField(default=True)
+    hospital_facilities = models.BooleanField(default=True)
+    internt_facilities = models.BooleanField(default=True)
+    telephone_facilities = models.BooleanField(default=True)
+    club_facilities = models.BooleanField(default=True)
     transfer_charges = RichTextField(blank=True, null=True)
     transfer_office = models.CharField(max_length=2000)
     location_on_map = models.CharField(max_length=1000)
     society_location = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     official_website = models.CharField(max_length=1000)
     official_contact_number = models.CharField(max_length=1000)
-    posession = models.BooleanField(default=False)
-    posession_date = models.DateTimeField(default=datetime.now, blank=True)
+    posession = models.CharField(max_length=2000)
     description_and_details_1 = RichTextField(blank=True, null=True)
     description_and_details_2 = RichTextField(blank=True, null=True)
     is_published = models.BooleanField(default=True)
@@ -491,3 +495,19 @@ class Socity_phase_other_documents_download(models.Model):
 
     class Meta:
         verbose_name = "10. Society Phase Other Documents"
+
+
+class Socity_phase_approved_from(models.Model):
+    society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
+    society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
+    title = models.CharField(max_length=1000)
+    is_published = models.BooleanField(default=True)
+    list_date = models.DateTimeField(default=datetime.now, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, blank=True)
+
+    def __str__(self):
+        return str(self.society.title) + 'and' + str(self.society_phase.title) +' Approved'
+
+    class Meta:
+        verbose_name = "10. Society Phase Approved"
