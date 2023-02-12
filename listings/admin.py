@@ -39,10 +39,10 @@ class Socity_transfer_officeInline(admin.StackedInline):
 
 @admin.register(Socity_transfer_office)
 class SocityTransferOfficeAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published', 'society','society_phase','office_name','office_contact_no','office_address','office_google_map','description_and_details')
+  list_display = ('id','is_published', 'society','society_phase','office_name','office_contact_no','office_address','description_and_details')
   list_display_links = ('id', )
   list_filter = ('society',)
-  list_editable = ('is_published','society','society_phase','office_name','office_contact_no','office_address','office_google_map','description_and_details')
+  list_editable = ('is_published','society','society_phase','office_name','office_contact_no','office_address','description_and_details')
   search_fields = ('society','society_phase',)
   list_per_page = 25
 

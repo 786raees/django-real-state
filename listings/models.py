@@ -282,7 +282,6 @@ class Socity_transfer_office(models.Model):
     office_name = models.CharField(max_length=200)
     office_contact_no = models.CharField(max_length=200)
     office_address = models.CharField(max_length=1000)
-    office_google_map = models.CharField(max_length=1000)
     description_and_details = RichTextField(blank=True, null=True)
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
