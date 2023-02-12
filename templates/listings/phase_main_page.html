@@ -76,6 +76,177 @@ th, td {
 {#            <a href="{% url 'listings' %}" class="btn btn-light mb-4">Phase 3</a>#}
 {#        </div>#}
    <div class="row">
+
+{% for phase_main in phase_mains %}
+             <div class="col-md-6">
+
+          <ul class="list-unstyled d-flex mb-0">
+          <p>Rating:&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              {{ total_phase_rating }}
+              {% if total_phase_rating == 0 %}
+              <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+              {% elif total_phase_rating <= 1 %}
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  {% elif total_phase_rating == 1.5 %}
+
+              <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
+                <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+              {% elif total_phase_rating <= 2 %}
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                      {% elif total_phase_rating == 2.5 %}
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+              {% elif total_phase_rating <= 3 %}
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                          {% elif total_phase_rating == 3.5 %}
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+              {% elif total_phase_rating <= 4 %}
+            <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  {% elif total_phase_rating == 4.5 %}
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
+              {% elif total_phase_rating <= 5 %}
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+              {% endif %}
+
+        <button class="btn-dark" style="color: white;" data-toggle="modal" data-target="#RatingModal">View Rating</button>
+      </ul>
+          </div>
+   {% endfor %}
+
+
+<!-- Rating Modal -->
+      <div class="modal fade" id="RatingModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="RatingModalLabel">All User Rating</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            {% for rating in phase_ratings %}
+
+            <div class="form-group">
+                          <ul class="list-unstyled d-flex">
+          <p>Rating: &nbsp;&nbsp;&nbsp;&nbsp;</p>
+              {% if rating.rate == 0 %}
+              <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+              {% elif rating.rate <= 1 %}
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  {% elif rating.rate == 1.5 %}
+
+              <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
+                <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+              {% elif rating.rate <= 2 %}
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                      {% elif rating.rate == 2.5 %}
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+              {% elif rating.rate <= 3 %}
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                          {% elif rating.rate == 3.5 %}
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+              {% elif rating.rate <= 4 %}
+            <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="far fa-star fa-sm text-warning"></i></li>
+                  {% elif rating.rate == 4.5 %}
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
+              {% elif rating.rate <= 5 %}
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+              {% endif %}
+      </ul>
+
+
+                 <br>
+              <label for="message" class="col-form-label">Message: <br>
+                  {{ rating.comment }}
+                  </label>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
    <div class="col-md-12">
           <!-- Home Main Image -->
           <div class="row mb-5 thumbs">
@@ -83,28 +254,80 @@ th, td {
           <!-- Fields -->
       {% for phase_main in phase_mains %}
 
-          <div class="row mb-5 fields" style="border: 1px solid;border-radius: 1%;">
+<div class="row mb-5 fields" style="border: 1px solid;border-radius: 1%;">
             <div class="col-md-6">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-calendar"></i> Launch Date:
                   <span class="float-right">{{ phase_main.launch_date |date }}</span>
                 </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-comments"></i> Rating:
-                  <span class="float-right">{{ total_phase_rating|floatformat:1 }} start</span>
+                  <li class="list-group-item text-secondary">
+                  <i class="fas fa-square"></i> possession:
+                  <span class="float-right">{{ phase_main.posession }}</span>
                 </li>
-{#                   <li class="list-group-item text-secondary">#}
-{#                  <i class="fas fa-comments"></i> Rating:#}
-{#                  <span class="float-right">{{ total_phase_rating }} start <span style="background: darkgray;border-radius: 9px; border: 2px solid burlywood;color: black;" data-toggle="modal" data-target="#RatingModal">View Rating</span></span>#}
-{#                </li>#}
+                              <li class="list-group-item text-secondary">
+                  <i class="fas fa-sitemap"></i> Offical Website:
+                    <span class="float-right"><a style="text-decoration: none;color: #1ba87e" href="{{phase_main.official_website  }}">{{phase_main.official_website }}</a>
+                  </span>
+                </li>
+
+
+
+              </ul>
+            </div>
+
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
                 <li class="list-group-item text-secondary">
+                  <i class="fas fa-th-large"></i> Project Status:
+                  <span class="float-right">{{ phase_main.society_status.title }}</span>
+                </li>
+                  <li class="list-group-item text-secondary">
+                  <i class="fas fa-paperclip"></i> Transfer Type:
+                  <span class="float-right">{{ phase_main.plot_types.title }}
+                  </span>
+                </li>
+                                    <li class="list-group-item text-secondary">
+                  <i class="fas fa-mobile"></i> Offical Contact No:
+                  <span class="float-right">{{ phase_main.official_contact_number }}
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+
+<div class="col-md-12">
+              <ul class="list-group list-group-flush">
+                                  <li class="list-group-item text-secondary">
                   <i class="fas fa-bath"></i> Approvals:
                   <span class="float-right">{{ phase_main.approvals }}</span>
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-child"></i> Facilities:
                   <span class="float-right">
+                  Available:&#9989;
+                      {% if phase_main.gas_facilities %}
+                        Gas
+                      {% endif %}
+                        {% if phase_main.water_facilities %}
+                        water
+                      {% endif %}
+                        {% if phase_main.mantaince_facilities %}
+                        Maintainer
+                      {% endif %}
+                        {% if phase_main.secuirty_facilities %}
+                        Security 24/7
+                      {% endif %}
+                        {% if phase_main.sav_facilities %}
+                         Sav
+                      {% endif %}
+                  {% if phase_main.electricity_facilities %}
+                         Electricity
+                      {% endif %}
+                  </span>
+                <br>
+                <span class="float-right">
+                    Not Available:&#10060;
                       {% if phase_main.gas_facilities %}
                         Gas
                       {% endif %}
@@ -125,57 +348,8 @@ th, td {
                       {% endif %}
                   </span>
                 </li>
-                  <li class="list-group-item text-secondary">
-                  <i class="fas fa-paperclip"></i> Transfer Type:
-                  <span class="float-right">{{ phase_main.plot_types.title }}
-                  </span>
-                </li>
-                  <li class="list-group-item text-secondary">
-                  <i class="fas fa-mobile"></i> Offical Contact No:
-                  <span class="float-right">{{ phase_main.official_contact_number }}
-                  </span>
-                </li>
               </ul>
-            </div>
-            <div class="col-md-6">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-th-large"></i> Status:
-                  <span class="float-right">{{ phase_main.society_status.title }}</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-square"></i> possession:
-                  {% if phase_main.posession  %}
-                  <span class="float-right">Yes
-                      {% else %}
-                        <span class="float-right">No
-                      {% endif %}
-                  </span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-calendar"></i> possession Date:
-                  <span class="float-right">{{ phase_main.posession_date|date }}</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-sitemap"></i> Offical Website:
-                    <span class="float-right"><a style="text-decoration: none;color: #1ba87e" href="{{phase_main.official_website  }}">{{phase_main.official_website }}</a>
-                  </span>
-                </li>
-                  <li class="list-group-item text-secondary">
-                  <i class="fas fa-money-bill-alt"></i> Transfer Charges:
-                  <span class="float-right">
-                      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Click To View</button>
-
-{#                      PKR-{{phase_main.transfer_charges }}#}
-                  </span>
-                </li>
-                  <li class="list-group-item text-secondary">
-                  <i class="fas fa-address-book"></i> Transfer Office:
-                  <span class="float-right">{{phase_main.transfer_office }}
-                  </span>
-                </li>
-              </ul>
-            </div>
+</div>
           </div>
 
                                   <!-- for Transfer Charges -->
@@ -554,32 +728,7 @@ th, td {
       </div>
     </div>
   </section>
-<!-- Rating Modal -->
-      <div class="modal fade" id="RatingModal" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="RatingModalLabel">All User Rating</h5>
-          <button type="button" class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            {% for rating in phase_ratings %}
 
-            <div class="form-group">
-                <label for="phone" class="col-form-label">Rating: {{  rating.rate }} star</label>
-                 <br>
-              <label for="message" class="col-form-label">Message: <br>
-                  {{ rating.comment }}
-                  </label>
-            </div>
-            <hr>
-            {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- serveices  -->
 
