@@ -7,6 +7,9 @@ from  embed_video.fields  import  EmbedVideoField
 from ckeditor.fields import RichTextField
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Upper
+from django.contrib.auth import  get_user_model
+
+User = get_user_model()
 
 rating_choices = (
     (0,0),
@@ -297,6 +300,7 @@ class Socity_transfer_office(models.Model):
 class Socity_Rating(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
     society_phase = models.ForeignKey(Socity_phase, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     comment = models.CharField(max_length=200)
     rate = models.IntegerField(choices=rating_choices, null=True, default=5)
     is_published = models.BooleanField(default=True)

@@ -78,7 +78,7 @@ th, td {
    <div class="row">
 
 {% for phase_main in phase_mains %}
-             <div class="col-md-6">
+          <div class="col-md-6">
 
           <ul class="list-unstyled d-flex mb-0">
           <p>Rating:&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -146,8 +146,8 @@ th, td {
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
               {% endif %}
 
-        <button class="btn-dark" style="color: white;" data-toggle="modal" data-target="#RatingModal">View Rating</button>
-      </ul>
+            <button class="btn-dark" style="color: white;" data-toggle="modal" data-target="#RatingModal">View Rating</button>
+            </ul>
           </div>
    {% endfor %}
 
@@ -230,13 +230,9 @@ th, td {
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
               {% endif %}
-      </ul>
-
-
-                 <br>
-              <label for="message" class="col-form-label">Message: <br>
-                  {{ rating.comment }}
-                  </label>
+              <label style="margin-left: 30%" for="message " class="col-form-label">User:&nbsp;{{ rating.user_id }}</label>
+            </ul>
+              <label for="message" class="col-form-label">Message: <br>{{ rating.comment }}</label>
             </div>
             <hr>
             {% endfor %}

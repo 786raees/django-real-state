@@ -124,10 +124,10 @@ class CityAdmin(admin.ModelAdmin):
 
 @admin.register(Socity_Rating)
 class SocityRatingAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published','society','society_phase','comment','rate')
+  list_display = ('id','is_published','society','society_phase','comment','rate','user_id')
   list_display_links = ('id',)
   list_filter = ('rate',)
-  list_editable = ('is_published','society','society_phase','comment','rate')
+  list_editable = ('is_published','society','society_phase','comment','rate','user_id')
   search_fields = ('rate','comment')
   list_per_page = 25
 
