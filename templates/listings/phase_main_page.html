@@ -24,6 +24,43 @@ th, td {
   text-align: left;
   padding: 8px;
 }
+
+
+.rate {
+    {#float: left;#}
+    height: 46px;
+    {#padding: 0 10px;#}
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
     </style>
 
 
@@ -158,6 +195,11 @@ th, td {
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="RatingModalLabel">All User Rating</h5>
+            {% if user.is_authenticated %}
+                   <div class="col-md-6" style="float: right">
+                    <button class="btn-dark btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Review</button>
+                    </div>
+            {% endif %}
           <button type="button" class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
@@ -754,12 +796,65 @@ th, td {
 
 
     {% endfor %}
+
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- serveices  -->
+    <!-- Inquiry Modal -->
+  <div class="modal fade" id="inquiryModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="inquiryModalLabel">Make An Review</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'contact' %}" method="POST">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+              <input type="hidden" name="user_id" value="{{ user.id }}">
+            {% else %}
+              <input type="hidden" name="user_id" value="0">
+            {% endif %}
+            <div class="form-group">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" name="name" disabled class="form-control" {% if user.is_authenticated %} value="{{ user.first_name }} {{ user.last_name }}" {% endif %} required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-form-label">Email:</label>
+              <input type="email" name="email" disabled class="form-control" {% if user.is_authenticated %} value="{{ user.email }}" {% endif %} required>
+            </div>
+            <div class="form-group">
+{#              <label for="phone" class="col-form-label">Rating:</label>#}
+              <div class="rate">
+                  Rating:
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+                  </div>
+            </div>
+            <div class="form-group">
+              <label for="message" class="col-form-label">Comment:</label>
+              <textarea name="message" class="form-control"></textarea>
+            </div>
+            <hr>
+            <input type="submit" value="Send" class="btn btn-block btn-dark">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}

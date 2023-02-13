@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .choices import price_choices, bedroom_choices, state_choices
-
+from django.shortcuts import redirect
+from django.contrib import messages
 from .models import *
 
 def index(request):
@@ -180,3 +181,27 @@ def search(request):
   return render(request, 'listings/search.html', context)
 
 
+def rating(request):
+  if request.method == 'POST':
+    listing_id = request.POST['listing_id']
+    listing = request.POST['listing']
+    name = request.POST['name']
+    email = request.POST['email']
+    phone = request.POST['phone']
+    message = request.POST['message']
+    user_id = request.POST['user_id']
+    realtor_email = request.POST['realtor_email']
+
+    #  Check if user has made inquiry already
+    if request.user.is_authenticated:
+      user_id = request.user.id
+      has_contacted = Socity_Rating.objects.all().filter(listing_id=listing_id, user_id=user_id)
+      if has_contacted:
+        messages.error(request, 'You have already made an Review against this Society Phase !')
+        return redirect('listings/society-phase/1/2')
+
+    contact = Socity_Rating(listing=listing, listing_id=listing_id, name=name, email=email, phone=phone, message=message, user_id=user_id )
+
+    contact.save()
+    messages.success(request, 'Your request has been submitted,Thanks')
+    return redirect('listings/society-phase/1/2')
