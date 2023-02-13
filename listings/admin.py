@@ -91,14 +91,14 @@ class SocitySectorAdmin(admin.ModelAdmin):
   search_fields = ('title',)
   list_per_page = 25
 
-@admin.register(Socity_tags)
-class SocityTagsAdmin(admin.ModelAdmin):
-  list_display = ('id','is_published','society', 'title')
-  list_display_links = ('id',)
-  list_filter = ('title',)
-  list_editable = ('is_published','society','title')
-  search_fields = ('title',)
-  list_per_page = 25
+# @admin.register(Socity_tags)
+# class SocityTagsAdmin(admin.ModelAdmin):
+#   list_display = ('id','is_published','society', 'title')
+#   list_display_links = ('id',)
+#   list_filter = ('title',)
+#   list_editable = ('is_published','society','title')
+#   search_fields = ('title',)
+#   list_per_page = 25
 
 @admin.register(Socity_latest_news)
 class SocityLatestNewsAdmin(admin.ModelAdmin):

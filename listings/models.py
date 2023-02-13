@@ -166,7 +166,7 @@ class Socity_Sector(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "12. Society Sector"
+        verbose_name = "16. Society Sector"
 
 class Socity_phase_Sector(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
@@ -181,7 +181,7 @@ class Socity_phase_Sector(models.Model):
         return str(self.society) +' '+str(self.society_phase) + ' '+ str(self.society_sector)
 
     class Meta:
-        verbose_name = "15. Society Phase and Sector"
+        verbose_name = "17. Society Phase and Sector"
         unique_together = ('society', 'society_phase','society_sector')
 
 class Society_Phase_Youtube_videos(models.Model):
@@ -292,7 +292,7 @@ class Socity_transfer_office(models.Model):
         return str(self.office_name) +' '+str(self.society)+' '+str(self.society_phase)
 
     class Meta:
-        verbose_name = "11. Society Transfer Office"
+        verbose_name = "14. Society Transfer Office"
 
 class Socity_Rating(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
@@ -340,7 +340,7 @@ class Listing(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "16. Plot Listing"
+        verbose_name = "18. Plot Listing"
 
 class Plot_details_table(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE)
@@ -456,7 +456,7 @@ class Society_phase_details_home_page(models.Model):
         return self.society.title
 
     class Meta:
-        verbose_name = "14. Society Phase Detail Home Page"
+        verbose_name = "15. Society Phase Detail Home Page"
         unique_together=('society','society_phase')
 
 
@@ -476,7 +476,7 @@ class Socity_phase_maps(models.Model):
         return str(self.society.title) + 'and' + str(self.society_phase.title) +' Map'
 
     class Meta:
-        verbose_name = "10. Society Phase Map"
+        verbose_name = "11. Society Phase Map"
 
 
 class Socity_phase_other_documents_download(models.Model):
@@ -494,7 +494,7 @@ class Socity_phase_other_documents_download(models.Model):
         return str(self.society.title) + 'and' + str(self.society_phase.title) +' Download Other Documents'
 
     class Meta:
-        verbose_name = "10. Society Phase Other Documents"
+        verbose_name = "12. Society Phase Other Documents"
 
 
 class Socity_phase_approved_from(models.Model):
@@ -510,4 +510,4 @@ class Socity_phase_approved_from(models.Model):
         return str(self.society.title) + 'and' + str(self.society_phase.title) +' Approved'
 
     class Meta:
-        verbose_name = "10. Society Phase Approved"
+        verbose_name = "13. Society Phase Approved"
