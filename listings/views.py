@@ -120,6 +120,7 @@ def society_phase_page(request, id_society,id_phase):
     'socity_phase_maps':socity_phase_maps,
     'socity_phase_other_documents':socity_phase_other_documents,
     'socity_phase_approved_froms':socity_phase_approved_froms,
+    'phase_id':phase_id.id,
     }
   return render(request, 'listings/phase_main_page.html', context)
 def listing(request, listing_id):
@@ -183,25 +184,21 @@ def search(request):
 
 def rating(request):
   if request.method == 'POST':
-    listing_id = request.POST['listing_id']
-    listing = request.POST['listing']
-    name = request.POST['name']
-    email = request.POST['email']
-    phone = request.POST['phone']
+    rate = request.POST['rate']
     message = request.POST['message']
+    society_id = request.POST['society_id']
+    phase_id = request.POST['phase_id']
     user_id = request.POST['user_id']
-    realtor_email = request.POST['realtor_email']
-
     #  Check if user has made inquiry already
     if request.user.is_authenticated:
       user_id = request.user.id
-      has_contacted = Socity_Rating.objects.all().filter(listing_id=listing_id, user_id=user_id)
+      has_contacted = Socity_Rating.objects.all().filter(society=society_id, society_phase=phase_id, user_id=user_id)
       if has_contacted:
         messages.error(request, 'You have already made an Review against this Society Phase !')
-        return redirect('listings/society-phase/1/2')
+        return redirect(f'/listings/society-phase/{society_id}/{phase_id}')
 
-    contact = Socity_Rating(listing=listing, listing_id=listing_id, name=name, email=email, phone=phone, message=message, user_id=user_id )
+    contact = Socity_Rating(society=society_id, society_phase=phase_id, user_id=user_id, comment=message,rate=rate )
 
     contact.save()
     messages.success(request, 'Your request has been submitted,Thanks')
-    return redirect('listings/society-phase/1/2')
+    return redirect(f'/listings/society-phase/{society_id}/{phase_id}')

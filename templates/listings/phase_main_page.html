@@ -814,21 +814,16 @@ th, td {
           </button>
         </div>
         <div class="modal-body">
-          <form action="{% url 'contact' %}" method="POST">
+
+          <form action="{% url 'rating' %}" method="POST">
             {% csrf_token %}
             {% if user.is_authenticated %}
               <input type="hidden" name="user_id" value="{{ user.id }}">
             {% else %}
               <input type="hidden" name="user_id" value="0">
             {% endif %}
-            <div class="form-group">
-              <label for="name" class="col-form-label">Name:</label>
-              <input type="text" name="name" disabled class="form-control" {% if user.is_authenticated %} value="{{ user.first_name }} {{ user.last_name }}" {% endif %} required>
-            </div>
-            <div class="form-group">
-              <label for="email" class="col-form-label">Email:</label>
-              <input type="email" name="email" disabled class="form-control" {% if user.is_authenticated %} value="{{ user.email }}" {% endif %} required>
-            </div>
+          <input type="hidden" name="society_id" value="{{ society_id }}">
+          <input type="hidden" name="phase_id" value="{{ phase_id }}">
             <div class="form-group">
 {#              <label for="phone" class="col-form-label">Rating:</label>#}
               <div class="rate">

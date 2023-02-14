@@ -9,5 +9,6 @@ urlpatterns = [
     path('society/<int:id>', views.society, name='society'),
     path('society-main/<int:id>', views.society_main_page, name='society-main'),
     path('society-phase/<int:id_society>/<int:id_phase>', views.society_phase_page, name='society-phase'),
+    path('rating', views.rating, name='rating'),
 
 ]
