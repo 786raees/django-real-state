@@ -186,19 +186,22 @@ def rating(request):
   if request.method == 'POST':
     rate = request.POST['rate']
     message = request.POST['message']
-    society_id = request.POST['society_id']
-    phase_id = request.POST['phase_id']
+    society_id_1 = request.POST['society_id']
+    phase_id_1 = request.POST['phase_id']
     user_id = request.POST['user_id']
+    society_id = Society.objects.filter(id=society_id_1).first()
+    phase_id = Socity_phase.objects.filter(id=phase_id_1).first()
+    user_id = User.objects.filter(id=user_id).first()
     #  Check if user has made inquiry already
     if request.user.is_authenticated:
-      user_id = request.user.id
+      # user_id = request.user.id
       has_contacted = Socity_Rating.objects.all().filter(society=society_id, society_phase=phase_id, user_id=user_id)
       if has_contacted:
         messages.error(request, 'You have already made an Review against this Society Phase !')
-        return redirect(f'/listings/society-phase/{society_id}/{phase_id}')
+        return redirect(f'/listings/society-phase/{society_id_1}/{phase_id_1}')
 
     contact = Socity_Rating(society=society_id, society_phase=phase_id, user_id=user_id, comment=message,rate=rate )
 
     contact.save()
     messages.success(request, 'Your request has been submitted,Thanks')
-    return redirect(f'/listings/society-phase/{society_id}/{phase_id}')
+    return redirect(f'/listings/society-phase/{society_id_1}/{phase_id_1}')
