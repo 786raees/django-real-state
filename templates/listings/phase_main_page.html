@@ -196,72 +196,72 @@ th, td {
           <div class="col-md-6">
 
           <ul class="list-unstyled d-flex mb-0">
-          <p>Rating:&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <p style="font-weight: bold; ">Rating:&nbsp;&nbsp;&nbsp;&nbsp;</p>
               {{ total_phase_rating }}
               {% if total_phase_rating == 0 %}
-              <li><i class="far fa-star fa-sm text-warning"></i></li>
+                    <li style="margin-left: 1%;"><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
               {% elif total_phase_rating <= 1 %}
-                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li style="margin-left: 1%;"><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   {% elif total_phase_rating == 1.5 %}
 
-              <li><i class="fas fa-star fa-sm text-warning"></i></li>
+              <li style="margin-left: 1%;"><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
                 <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
               {% elif total_phase_rating <= 2 %}
-                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li style="margin-left: 1%;"><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                       {% elif total_phase_rating == 2.5 %}
-                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li style="margin-left: 1%;"><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
               {% elif total_phase_rating <= 3 %}
-                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li style="margin-left: 1%;"><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                           {% elif total_phase_rating == 3.5 %}
-                  <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                  <li style="margin-left: 1%;"><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
               {% elif total_phase_rating <= 4 %}
-            <li><i class="fas fa-star fa-sm text-warning"></i></li>
+            <li style="margin-left: 1%;"><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="far fa-star fa-sm text-warning"></i></li>
                   {% elif total_phase_rating == 4.5 %}
-                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li style="margin-left: 1%;"><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star fa-sm text-warning"></i></li>
                   <li><i class="fas fa-star-half fa-sm text-warning"></i></li>
               {% elif total_phase_rating <= 5 %}
-                <li><i class="fas fa-star fa-sm text-warning"></i></li>
+                <li style="margin-left: 1%;"><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
                 <li><i class="fas fa-star fa-sm text-warning"></i></li>
               {% endif %}
 
-            <button class="btn-dark" style="color: white;" data-toggle="modal" data-target="#RatingModal">View Rating</button>
+            <button class="btn-dark" style="color: white;margin-left: 2%;border-radius: 30%;" data-toggle="modal" data-target="#RatingModal">View Rating</button>
             </ul>
           </div>
    {% endfor %}
@@ -370,7 +370,7 @@ th, td {
           <!-- Fields -->
       {% for phase_main in phase_mains %}
 
-<div class="row mb-5 fields" style="border: 1px solid;border-radius: 1%;">
+<div class="row mb-5 fields" style="border: 2px;border-radius: 1%; border-style:dashed ">
             <div class="col-md-6">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-secondary">
@@ -381,14 +381,11 @@ th, td {
                   <i class="fas fa-square"></i> possession:
                   <span class="float-right">{{ phase_main.posession }}</span>
                 </li>
-                              <li class="list-group-item text-secondary">
+                  <li class="list-group-item text-secondary">
                   <i class="fas fa-sitemap"></i> Offical Website:
                     <span class="float-right"><a style="text-decoration: none;color: #1ba87e" href="{{phase_main.official_website  }}">{{phase_main.official_website }}</a>
                   </span>
                 </li>
-
-
-
               </ul>
             </div>
 
@@ -525,282 +522,294 @@ th, td {
 
     {% endfor %}
 
+
+
                 <!-- Transfer office module -->
-   {% if society_transfer_offices %}
-       <div class="col-md-12" style="border: 1px solid;margin-top: 2%;padding: 1%;">
+                   {% if society_transfer_offices %}
+                       <div class="col-md-12" style="border: 1px solid;margin-top: 2%;padding: 1%;">
 
-              <b>Transfer Office:</b>
-              {% for society_transfer_office in society_transfer_offices %}
-          <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample{{ society_transfer_office.id }}" aria-expanded="false" aria-controls="collapseExample">
-            {{ society_transfer_office.office_name}}
-          </button>
-          {% endfor %}
+                              <b>Transfer Office:</b>
+                              {% for society_transfer_office in society_transfer_offices %}
+                          <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample{{ society_transfer_office.id }}" aria-expanded="false" aria-controls="collapseExample">
+                            {{ society_transfer_office.office_name}}
+                          </button>
+                          {% endfor %}
 
-    {% for society_transfer_office in society_transfer_offices %}
-   <div class="collapse card mb-3" id="collapseExample{{ society_transfer_office.id }}">
-  <div class="card card-body">
-    <h5 class="card-title">Office Name: {{ society_transfer_office.office_name}}</h5>
-      <h6 class="card-title">Contact No: {{ society_transfer_office.office_contact_no}}</h6>
-    <p class="card-text">{{ society_transfer_office.description_and_details|safe }}</p>
-    <p class="card-text"><small class="text-muted">Office Address: {{ society_transfer_office.office_address }}</small></p>
-  </div>
-</div>
-       {% endfor %}
-       </div>
-      {% endif %}
+                    {% for society_transfer_office in society_transfer_offices %}
+                   <div class="collapse card mb-3" id="collapseExample{{ society_transfer_office.id }}">
+                  <div class="card card-body">
+                    <h5 class="card-title">Office Name: {{ society_transfer_office.office_name}}</h5>
+                      <h6 class="card-title">Contact No: {{ society_transfer_office.office_contact_no}}</h6>
+                    <p class="card-text">{{ society_transfer_office.description_and_details|safe }}</p>
+                    <p class="card-text"><small class="text-muted">Office Address: {{ society_transfer_office.office_address }}</small></p>
+                  </div>
+                </div>
+                       {% endfor %}
+                       </div>
+                      {% endif %}
 
 
                    <!-- Transfer office module -->
-   {% if phase_mains %}
-       <div class="col-md-12" style="border: 1px solid;margin-top: 2%;padding: 1%;">
-       <b>Transfer Charges:</b>
-       <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Click Here To View Transfer Charges</button>
-        </div>
-      {% endif %}
+               {% if phase_mains %}
+                   <div class="col-md-12" style="border: 1px solid;margin-top: 2%;padding: 1%;">
+                   <b>Transfer Charges:</b>
+                   <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Click Here To View Transfer Charges</button>
+                    </div>
+                  {% endif %}
 
 
 
 
-{% if socity_phase_maps %}
-<div class="row mt-5">
-{% for socity_phase_map in socity_phase_maps %}
-  <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ socity_phase_map.title}}</h5>
-        <p class="card-text">{{ socity_phase_map.description }}</p>
-          <button class="btn btn-primary"><a style="color: white; text-decoration: none" href="{{ socity_phase_map.map.url }}" download="">Click to Download</a></button>
-      </div>
-    </div>
-  </div>
-{% endfor %}
-</div>
-   {% endif %}
+                {% if socity_phase_maps %}
+                <div class="row mt-5">
+                {% for socity_phase_map in socity_phase_maps %}
+                  <div class="col-sm-3">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ socity_phase_map.title}}</h5>
+                        <p class="card-text">{{ socity_phase_map.description }}</p>
+                          <button class="btn btn-primary"><a style="color: white; text-decoration: none" href="{{ socity_phase_map.map.url }}" download="">Click to Download</a></button>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+                </div>
+                   {% endif %}
 
-   {% for phase_main in phase_mains %}
-       <div class="row mt-5">
-       <div class="col-md-7">
-       <p>Phase Gallery</p>
-       <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
-        <div class="swiper-wrapper">
-          {% if phase_main.society_phase_home_page_images.photo_main %}
-        <div class="swiper-slide">
-          <img src="{{ phase_main.society_phase_home_page_images.photo_main.url }}" alt="First slide">
-        </div>
-        {% endif %}
-        {% if phase_main.society_phase_home_page_images.photo_1 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_1.url }}" alt="Second slide">
-      </div>
-    {% endif %}
-        {% if phase_main.society_phase_home_page_images.photo_2 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_2.url }}" alt="Third slide">
-      </div>
-    {% endif %}
-          {% if phase_main.society_phase_home_page_images.photo_3 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_3.url }}" alt="Fourth slide">
-      </div>
-    {% endif %}
-        {% if phase_main.society_phase_home_page_images.photo_4 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_4.url }}" alt="Fifth slide">
-      </div>
-    {% endif %}
-          {% if phase_main.society_phase_home_page_images.photo_5 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_5.url }}" alt="Sixth slide">
-      </div>
-    {% endif %}
-          {% if phase_main.society_phase_home_page_images.photo_6 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_6.url }}" alt="Second slide">
-      </div>
-    {% endif %}
-        {% if phase_main.society_phase_home_page_images.photo_7 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_7.url }}" alt="Third slide">
-      </div>
-    {% endif %}
-          {% if phase_main.society_phase_home_page_images.photo_8 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_8.url }}" alt="Fourth slide">
-      </div>
-    {% endif %}
-        {% if phase_main.society_phase_home_page_images.photo_9 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_9.url }}" alt="Fifth slide">
-      </div>
-    {% endif %}
-          {% if phase_main.society_phase_home_page_images.photo_10 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_10.url }}" alt="Sixth slide">
-      </div>
-    {% endif %}
-          
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      </div>
-      <div thumbsSlider="" class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          {% if phase_main.society_phase_home_page_images.photo_main %}
-        <div class="swiper-slide">
-          <img src="{{ phase_main.society_phase_home_page_images.photo_main.url }}" alt="First slide">
-        </div>
-        {% endif %}
-        {% if phase_main.society_phase_home_page_images.photo_1 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_1.url }}" alt="Second slide">
-      </div>
-    {% endif %}
-        {% if phase_main.society_phase_home_page_images.photo_2 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_2.url }}" alt="Third slide">
-      </div>
-    {% endif %}
-          {% if phase_main.society_phase_home_page_images.photo_3 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_3.url }}" alt="Fourth slide">
-      </div>
-    {% endif %}
-        {% if phase_main.society_phase_home_page_images.photo_4 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_4.url }}" alt="Fifth slide">
-      </div>
-    {% endif %}
-          {% if phase_main.society_phase_home_page_images.photo_5 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_5.url }}" alt="Sixth slide">
-      </div>
-    {% endif %}
-          {% if phase_main.society_phase_home_page_images.photo_6 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_6.url }}" alt="Second slide">
-      </div>
-    {% endif %}
-        {% if phase_main.society_phase_home_page_images.photo_7 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_7.url }}" alt="Third slide">
-      </div>
-    {% endif %}
-          {% if phase_main.society_phase_home_page_images.photo_8 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_8.url }}" alt="Fourth slide">
-      </div>
-    {% endif %}
-        {% if phase_main.society_phase_home_page_images.photo_9 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_9.url }}" alt="Fifth slide">
-      </div>
-    {% endif %}
-          {% if phase_main.society_phase_home_page_images.photo_10 %}
-      <div class="swiper-slide">
-        <img src="{{ phase_main.society_phase_home_page_images.photo_10.url }}" alt="Sixth slide">
-      </div>
-    {% endif %}
-          
-        </div>
-      </div>
-         </div>
-         <div class="col-md-5"> 
-             <p>Location on Map</p> 
-         <iframe src="{{ phase_main.location_on_map|safe }}" width="100%" height="300" style="border: 0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
-         </div> 
-        </div>
-   {% endfor %}
+               {% for phase_main in phase_mains %}
+                   <div class="row mt-5">
+                   <div class="col-md-7">
+                   <p>Phase Gallery</p>
+                   <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+                    <div class="swiper-wrapper">
+                      {% if phase_main.society_phase_home_page_images.photo_main %}
+                    <div class="swiper-slide">
+                      <img src="{{ phase_main.society_phase_home_page_images.photo_main.url }}" alt="First slide">
+                    </div>
+                    {% endif %}
+                    {% if phase_main.society_phase_home_page_images.photo_1 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_1.url }}" alt="Second slide">
+                  </div>
+                {% endif %}
+                    {% if phase_main.society_phase_home_page_images.photo_2 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_2.url }}" alt="Third slide">
+                  </div>
+                {% endif %}
+                      {% if phase_main.society_phase_home_page_images.photo_3 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_3.url }}" alt="Fourth slide">
+                  </div>
+                {% endif %}
+                    {% if phase_main.society_phase_home_page_images.photo_4 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_4.url }}" alt="Fifth slide">
+                  </div>
+                {% endif %}
+                      {% if phase_main.society_phase_home_page_images.photo_5 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_5.url }}" alt="Sixth slide">
+                  </div>
+                {% endif %}
+                      {% if phase_main.society_phase_home_page_images.photo_6 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_6.url }}" alt="Second slide">
+                  </div>
+                {% endif %}
+                    {% if phase_main.society_phase_home_page_images.photo_7 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_7.url }}" alt="Third slide">
+                  </div>
+                {% endif %}
+                      {% if phase_main.society_phase_home_page_images.photo_8 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_8.url }}" alt="Fourth slide">
+                  </div>
+                {% endif %}
+                    {% if phase_main.society_phase_home_page_images.photo_9 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_9.url }}" alt="Fifth slide">
+                  </div>
+                {% endif %}
+                      {% if phase_main.society_phase_home_page_images.photo_10 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_10.url }}" alt="Sixth slide">
+                  </div>
+                {% endif %}
+
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                  </div>
+                  <div thumbsSlider="" class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                      {% if phase_main.society_phase_home_page_images.photo_main %}
+                    <div class="swiper-slide">
+                      <img src="{{ phase_main.society_phase_home_page_images.photo_main.url }}" alt="First slide">
+                    </div>
+                    {% endif %}
+                    {% if phase_main.society_phase_home_page_images.photo_1 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_1.url }}" alt="Second slide">
+                  </div>
+                {% endif %}
+                    {% if phase_main.society_phase_home_page_images.photo_2 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_2.url }}" alt="Third slide">
+                  </div>
+                {% endif %}
+                      {% if phase_main.society_phase_home_page_images.photo_3 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_3.url }}" alt="Fourth slide">
+                  </div>
+                {% endif %}
+                    {% if phase_main.society_phase_home_page_images.photo_4 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_4.url }}" alt="Fifth slide">
+                  </div>
+                {% endif %}
+                      {% if phase_main.society_phase_home_page_images.photo_5 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_5.url }}" alt="Sixth slide">
+                  </div>
+                {% endif %}
+                      {% if phase_main.society_phase_home_page_images.photo_6 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_6.url }}" alt="Second slide">
+                  </div>
+                {% endif %}
+                    {% if phase_main.society_phase_home_page_images.photo_7 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_7.url }}" alt="Third slide">
+                  </div>
+                {% endif %}
+                      {% if phase_main.society_phase_home_page_images.photo_8 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_8.url }}" alt="Fourth slide">
+                  </div>
+                {% endif %}
+                    {% if phase_main.society_phase_home_page_images.photo_9 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_9.url }}" alt="Fifth slide">
+                  </div>
+                {% endif %}
+                      {% if phase_main.society_phase_home_page_images.photo_10 %}
+                  <div class="swiper-slide">
+                    <img src="{{ phase_main.society_phase_home_page_images.photo_10.url }}" alt="Sixth slide">
+                  </div>
+                {% endif %}
+
+                    </div>
+                  </div>
+                     </div>
+                     <div class="col-md-5">
+                         <p>Location on Map</p>
+                     <iframe src="{{ phase_main.location_on_map|safe }}" width="100%" height="300" style="border: 0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                     </div>
+                    </div>
+               {% endfor %}
 
 
                    <!-- other documents for download module -->
-   {% if socity_phase_other_documents %}
-       <div class="col-md-12" style="border: 1px solid;margin-top: 2%;padding: 1%;">
+               {% if socity_phase_other_documents %}
+                   <div class="col-md-12" style="border: 1px solid;margin-top: 2%;padding: 1%;">
 
-              <b>Important Document:</b>
-              {% for socity_phase_other_document in socity_phase_other_documents %}
-          <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample{{ socity_phase_other_document.id }}" aria-expanded="false" aria-controls="collapseExample">
-            {{ socity_phase_other_document.title}}
-          </button>
-          {% endfor %}
+                          <b>Important Document:</b>
+                          {% for socity_phase_other_document in socity_phase_other_documents %}
+                      <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample{{ socity_phase_other_document.id }}" aria-expanded="false" aria-controls="collapseExample">
+                        {{ socity_phase_other_document.title}}
+                      </button>
+                      {% endfor %}
 
-    {% for socity_phase_other_document in socity_phase_other_documents %}
-   <div class="collapse card mb-3" id="collapseExample{{ socity_phase_other_document.id }}">
-    <div class="card card-body">
-        <h5 class="card-title">Title: {{ socity_phase_other_document.title}}</h5>
-    <p class="card-text">{{ socity_phase_other_document.description|safe }}</p>
-     <button class="btn btn-primary"><a style="color: white; text-decoration: none" href="{{ socity_phase_other_document.document.url }}" download="">Click to Download</a></button>
+                {% for socity_phase_other_document in socity_phase_other_documents %}
+               <div class="collapse card mb-3" id="collapseExample{{ socity_phase_other_document.id }}">
+                <div class="card card-body">
+                    <h5 class="card-title">Title: {{ socity_phase_other_document.title}}</h5>
+                <p class="card-text">{{ socity_phase_other_document.description|safe }}</p>
+                 <button class="btn btn-primary"><a style="color: white; text-decoration: none" href="{{ socity_phase_other_document.document.url }}" download="">Click to Download</a></button>
 
-  </div>
-</div>
-       {% endfor %}
-       </div>
-      {% endif %}
+                </div>
+                </div>
+                   {% endfor %}
+                   </div>
+                  {% endif %}
 
 
-   <div class="container mt-5 overflow-auto">
-    <div class="row">
-        <div class="col-md-12">
-            <div class=" justify-content-between align-items-center breaking-news bg-white">
-                <div class="flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news"><span class="d-flex align-items-center">&nbsp;Latest News & Updates</span></div>
-                    <div class="ml-3 mt-2">
-                     {% for latest_new in latest_news %}
-                        <p>
-                    <span class="dot"></span> <a target="_blank" href="{{ latest_new.news_link }}">{{ latest_new.title }} Related to {{ latest_new.society_phase.title }} </a>
-                    </p>
-                    {% endfor %}
+
+
+
+
+                   <div class="container mt-5 overflow-auto">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class=" justify-content-between align-items-center breaking-news bg-white">
+                                <div class="flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news"><span class="d-flex align-items-center">&nbsp;Latest News & Updates</span></div>
+                                    <div class="ml-3 mt-2" style="overflow: auto; height: 100px;">
+                                     {% for latest_new in latest_news %}
+                                        <p>
+                                    <span class="dot"></span> <a target="_blank" href="{{ latest_new.news_link }}">{{ latest_new.title }} Related to {{ latest_new.society_phase.title }} </a>
+                                    </p>
+                                    {% endfor %}
+                                    </div>
+                            </div>
+                        </div>
                     </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </div>
 
-{% for phase_main in phase_mains %}
-              <div class="row mb-5 mt-5">
-            <div class="col-md-12">
-                {{ phase_main.description_and_details_1|safe }}
-            </div>
-          </div>
-   {% endfor %}
-{#   table#}
-<div class="card mb-4 mt-5" style="overflow-x:auto;">
-    <div class="card-header">
-        <div class="card-heading">Daily Price Update Chart</div>
-        <input class="float-right" id="date_value" onchange="updateTableRecord({{ society_id }}, {{ phase_id }})" type="date">
-    </div>
-        <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
-            <thead>
-            <tr>
-                <th>Phase</th>
-                <th>Dim</th>
-                <th>Type</th>
-                <th>Category</th>
-                <th>Block</th>
-                <th>Price</th>
-                <th>Date</th>
-                <th>Contact</th>
-                <th>Remarks</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% if phase_plot_table_datas %}
-            {% for phase_plot_table_data in phase_plot_table_datas %}
-            <tr>
-                <td>{{ phase_plot_table_data.society_phase.title }}</td>
-                <td>{{ phase_plot_table_data.dimension|safe }}</td>
-                <td>{{ phase_plot_table_data.plot_type.title }}</td>
-                <td>{{ phase_plot_table_data.plot_category.title }}</td>
-                <td>{{ phase_plot_table_data.block }}</td>
-                <td>{{ phase_plot_table_data.price }}</td>
-                <td>{{ phase_plot_table_data.list_date|date }}</td>
-                <td>{{ phase_plot_table_data.contact }}</td>
-                <td>{{ phase_plot_table_data.remarks }}</td>
-            </tr>
-            {% endfor %}
-            {% endif %}
-            </tbody>
-        </table>
-    </div>
-</div>
+
+
+
+                    {% for phase_main in phase_mains %}
+                                  <div class="row mb-5 mt-5">
+                                <div class="col-md-12">
+                                    {{ phase_main.description_and_details_1|safe }}
+                                </div>
+                              </div>
+                       {% endfor %}
+
+
+
+                    {#   table#}
+                    <div class="card mb-4 mt-5" style="overflow-x:auto;">
+                        <div class="card-header">
+                            <div class="card-heading">Daily Price Update Chart</div>
+                            <input class="float-right" id="date_value" onchange="updateTableRecord({{ society_id }}, {{ phase_id }})" type="date">
+                        </div>
+                            <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>Phase</th>
+                                    <th>Dim</th>
+                                    <th>Type</th>
+                                    <th>Category</th>
+                                    <th>Block</th>
+                                    <th>Price</th>
+                                    <th>Date</th>
+                                    <th>Contact</th>
+                                    <th>Remarks</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% if phase_plot_table_datas %}
+                                {% for phase_plot_table_data in phase_plot_table_datas %}
+                                <tr>
+                                    <td>{{ phase_plot_table_data.society_phase.title }}</td>
+                                    <td>{{ phase_plot_table_data.dimension|safe }}</td>
+                                    <td>{{ phase_plot_table_data.plot_type.title }}</td>
+                                    <td>{{ phase_plot_table_data.plot_category.title }}</td>
+                                    <td>{{ phase_plot_table_data.block }}</td>
+                                    <td>{{ phase_plot_table_data.price }}</td>
+                                    <td>{{ phase_plot_table_data.list_date|date }}</td>
+                                    <td>{{ phase_plot_table_data.contact }}</td>
+                                    <td>{{ phase_plot_table_data.remarks }}</td>
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
 
 
@@ -817,69 +826,69 @@ th, td {
              
             <!-- videos  -->
 
-<div class="col-md-12 mt-4">
-    <div id="carouselExampleIndicators1" class="carousel slide" data-interval="false">
-  <ol class="carousel-indicators">
-      {% if phase_main.society_phase_youtube_videos.yut_video_1 %}
-    <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
-      {% endif %}
-      {% if phase_main.society_phase_youtube_videos.yut_video_2 %}
-    <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
-  {% endif %}
-      {% if phase_main.society_phase_youtube_videos.yut_video_3 %}
-    <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
-  {% endif %}
-        {% if phase_main.society_phase_youtube_videos.yut_video_4 %}
-    <li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
-  {% endif %}
-      {% if phase_main.society_phase_youtube_videos.yut_video_5 %}
-    <li data-target="#carouselExampleIndicators1" data-slide-to="4"></li>
-  {% endif %}
-        {% if phase_main.society_phase_youtube_videos.yut_video_6 %}
-    <li data-target="#carouselExampleIndicators1" data-slide-to="5"></li>
-  {% endif %}
-  </ol>
-  <div class="carousel-inner">
-      {% if phase_main.society_phase_youtube_videos.yut_video_1 %}
-    <div class="carousel-item active hover-zoom">
-      {% video phase_main.society_phase_youtube_videos.yut_video_1 '100% x 480' %}
-    </div>
-      {% endif %}
-      {% if phase_main.society_phase_youtube_videos.yut_video_2 %}
-    <div class="carousel-item hover-zoom">
-      {% video phase_main.society_phase_youtube_videos.yut_video_2 '100% x 480' %}
-    </div>
-  {% endif %}
-      {% if phase_main.society_phase_youtube_videos.yut_video_3 %}
-    <div class="carousel-item">
-{% video phase_main.society_phase_youtube_videos.yut_video_3 '100% x 480' %}    </div>
-  {% endif %}
-        {% if phase_main.society_phase_youtube_videos.yut_video_4 %}
-    <div class="carousel-item hover-zoom">
-{% video phase_main.society_phase_youtube_videos.yut_video_4 '100% x 480' %}    </div>
-  {% endif %}
-      {% if phase_main.society_phase_youtube_videos.yut_video_5 %}
-    <div class="carousel-item">
-{% video phase_main.society_phase_youtube_videos.yut_video_5 '100% x 480' %}    </div>
-  {% endif %}
-        {% if phase_main.society_phase_youtube_videos.yut_video_6 %}
-    <div class="carousel-item">
-{% video phase_main.society_phase_youtube_videos.yut_video_6 '100% x 480' %}    </div>
-  {% endif %}
-  </div>
-  <a class="carousel-control-prev" style="margin-bottom: 15%" href="#carouselExampleIndicators1" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" style="margin-bottom: 15%" href="#carouselExampleIndicators1" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-</div>
+            <div class="col-md-12 mt-4">
+                <div id="carouselExampleIndicators1" class="carousel slide" data-interval="false">
+              <ol class="carousel-indicators">
+                  {% if phase_main.society_phase_youtube_videos.yut_video_1 %}
+                <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+                  {% endif %}
+                  {% if phase_main.society_phase_youtube_videos.yut_video_2 %}
+                <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+              {% endif %}
+                  {% if phase_main.society_phase_youtube_videos.yut_video_3 %}
+                <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+              {% endif %}
+                    {% if phase_main.society_phase_youtube_videos.yut_video_4 %}
+                <li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
+              {% endif %}
+                  {% if phase_main.society_phase_youtube_videos.yut_video_5 %}
+                <li data-target="#carouselExampleIndicators1" data-slide-to="4"></li>
+              {% endif %}
+                    {% if phase_main.society_phase_youtube_videos.yut_video_6 %}
+                <li data-target="#carouselExampleIndicators1" data-slide-to="5"></li>
+              {% endif %}
+              </ol>
+              <div class="carousel-inner">
+                  {% if phase_main.society_phase_youtube_videos.yut_video_1 %}
+                <div class="carousel-item active hover-zoom">
+                  {% video phase_main.society_phase_youtube_videos.yut_video_1 '100% x 480' %}
+                </div>
+                  {% endif %}
+                  {% if phase_main.society_phase_youtube_videos.yut_video_2 %}
+                <div class="carousel-item hover-zoom">
+                  {% video phase_main.society_phase_youtube_videos.yut_video_2 '100% x 480' %}
+                </div>
+              {% endif %}
+                  {% if phase_main.society_phase_youtube_videos.yut_video_3 %}
+                <div class="carousel-item">
+            {% video phase_main.society_phase_youtube_videos.yut_video_3 '100% x 480' %}    </div>
+              {% endif %}
+                    {% if phase_main.society_phase_youtube_videos.yut_video_4 %}
+                <div class="carousel-item hover-zoom">
+            {% video phase_main.society_phase_youtube_videos.yut_video_4 '100% x 480' %}    </div>
+              {% endif %}
+                  {% if phase_main.society_phase_youtube_videos.yut_video_5 %}
+                <div class="carousel-item">
+            {% video phase_main.society_phase_youtube_videos.yut_video_5 '100% x 480' %}    </div>
+              {% endif %}
+                    {% if phase_main.society_phase_youtube_videos.yut_video_6 %}
+                <div class="carousel-item">
+            {% video phase_main.society_phase_youtube_videos.yut_video_6 '100% x 480' %}    </div>
+              {% endif %}
+              </div>
+              <a class="carousel-control-prev" style="margin-bottom: 15%" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" style="margin-bottom: 15%" href="#carouselExampleIndicators1" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            </div>
 
 
-    {% endfor %}
+            {% endfor %}
 
         </div>
       </div>
