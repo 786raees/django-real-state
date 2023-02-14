@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .choices import price_choices, bedroom_choices, state_choices
@@ -83,14 +85,25 @@ def society_main_page(request, id):
   return render(request, 'listings/society_main_page.html', context)
 
 def society_phase_page(request, id_society,id_phase):
+  dates = ''
+  try:
+    dates = request.GET['date']
+  except:
+    pass
   city_data = city.objects.order_by('-list_date').filter(is_published=True)
   society_id = Society.objects.filter(id=id_society).first()
   phase_id = Socity_phase.objects.filter(id=id_phase).first()
   society_transfer_office= Socity_transfer_office.objects.order_by('-list_date').filter(is_published=True).filter(society_phase=phase_id)
   phase_main = Society_phase_details_home_page.objects.order_by('-list_date').filter(is_published=True)\
     .filter(society=society_id).filter(society_phase=phase_id)
-  phase_plot_table_data = Plot_phase_details_table.objects.order_by('-list_date').filter(is_published=True)\
-    .filter(society=society_id).filter(society_phase=phase_id)
+  if dates != '':
+    phase_plot_table_data = Plot_phase_details_table.objects.order_by('-list_date').filter(is_published=True,
+                                                                                           society=society_id,
+                                                                                           society_phase=phase_id,
+                                                                                           created_at__date=datetime.strptime(dates, '%Y-%m-%d'))
+  else:
+    phase_plot_table_data = Plot_phase_details_table.objects.order_by('-list_date').filter(is_published=True) \
+      .filter(society=society_id).filter(society_phase=phase_id)
   latest_news = Socity_latest_news.objects.order_by('-list_date').filter(is_published=True).filter(society_phase=phase_id)
   society_dropdown = Society.objects.order_by('-list_date').filter(is_published=True)
   phase_rating = Socity_Rating.objects.order_by('-list_date').filter(is_published=True).filter(society=society_id).filter(society_phase=phase_id)
