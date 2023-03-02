@@ -774,7 +774,12 @@ th, td {
                     <div class="card mb-4 mt-5" style="overflow-x:auto;">
                         <div class="card-header">
                             <div class="card-heading">Daily Price Update Chart</div>
-                            <input class="float-right" id="date_value" onchange="updateTableRecord({{ society_id }}, {{ phase_id }})" type="date">
+                            <form hx-target="#example" hx-swap="outerHTML" hx-select="#example" hx-get="/listings/society-phase/{{ society_id }}/{{ phase_id }}">
+                              <div class="row float-right">
+                                <input name="date" type="date">
+                                <button type="submit" class="btn btn-info">search</button>
+                              </div>
+                            </form>
                         </div>
                             <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
                                 <thead>
@@ -946,9 +951,12 @@ th, td {
   </div>
 
     <script>
-
+      var date_value = $('#date_value');
+      date_value.on('change', (e) => {
+        $("#date_form").submit();
+      });
     function updateTableRecord(society, phase){
-    var date_value = $('#date_value').val();
+      date_value.val();
     $.ajax({
           url: '/listings/society-phase/'+society+'/'+phase,
           type:"GET",
@@ -956,7 +964,7 @@ th, td {
               'date':date_value,
         },
           success: function(response, xhr){
-                window.location.href = window.location.href;
+                // window.location.href = window.location.href;
           }
     });
 }

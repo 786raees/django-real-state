@@ -19,6 +19,9 @@
   <!-- Lightbox -->
   <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
+
+  <script src="{% static 'js/htmx.min.js' %}" defer></script>
 
   <title> Wirsa Real Estate {% block title %}{% endblock %}</title>
 </head>
@@ -34,7 +37,6 @@
   {% include 'partials/_footer.html' %}
   
 
-  <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
   <script src="{% static 'js/lightbox.min.js' %} "></script>
   <script src="{% static 'js/main.js' %} "></script>

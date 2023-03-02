@@ -85,18 +85,15 @@ def society_main_page(request, id):
   return render(request, 'listings/society_main_page.html', context)
 
 def society_phase_page(request, id_society,id_phase):
-  dates = ''
-  try:
-    dates = request.GET['date']
-  except:
-    pass
+  dates = request.GET.get('date')
+
   city_data = city.objects.order_by('-list_date').filter(is_published=True)
   society_id = Society.objects.filter(id=id_society).first()
   phase_id = Socity_phase.objects.filter(id=id_phase).first()
   society_transfer_office= Socity_transfer_office.objects.order_by('-list_date').filter(is_published=True).filter(society_phase=phase_id)
   phase_main = Society_phase_details_home_page.objects.order_by('-list_date').filter(is_published=True)\
     .filter(society=society_id).filter(society_phase=phase_id)
-  if dates != '':
+  if dates:
     phase_plot_table_data = Plot_phase_details_table.objects.order_by('-list_date').filter(is_published=True,
                                                                                            society=society_id,
                                                                                            society_phase=phase_id,
@@ -126,7 +123,7 @@ def society_phase_page(request, id_society,id_phase):
     'city_dropdown':city_data,
       'phase_mains': phase_main,
       'state_choices': state_choices,
-      'society_id': society_id.id,
+      'society_id': society_id.id, # type: ignore
       'phase_plot_table_datas':phase_plot_table_data,
     'latest_news':latest_news,
     'society_dropdowns':society_dropdown,
