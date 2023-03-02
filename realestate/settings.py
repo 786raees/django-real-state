@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'realestate.wsgi.application'
 # }
 
 DATABASES = {
-    "default1": {
+    "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": config("POSTGRES_DB"),
         "USER": config("POSTGRES_USER"),
@@ -92,7 +92,7 @@ DATABASES = {
         "HOST": config("DATABASE_HOST"),
         "PORT": "5432",
     },
-    'default': {
+    'default1': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
