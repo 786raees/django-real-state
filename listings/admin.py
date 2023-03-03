@@ -221,16 +221,16 @@ class ListingAdmin(admin.ModelAdmin):
 #   search_fields = ('society',)
 #   list_per_page = 25
 
-# @admin.register(Plot_phase_details_table)
-# class PlotPhaseDetailsTableAdmin(admin.ModelAdmin):
-#   list_display = ('id','is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
-#                   'block', 'price', 'contact', 'remarks')
-#   list_display_links = ('id',)
-#   list_filter = ('society','society_phase')
-#   list_editable = ('is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
-#                   'block', 'price', 'contact', 'remarks')
-#   search_fields = ('society','society_phase')
-#   list_per_page = 25
+@admin.register(Plot_phase_details_table)
+class PlotPhaseDetailsTableAdmin(admin.ModelAdmin):
+  list_display = ('id','is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
+                  'block', 'price', 'contact', 'remarks')
+  list_display_links = ('id',)
+  list_filter = ('society','society_phase')
+  list_editable = ('is_published', 'society', 'society_phase', 'dimension','plot_type','plot_category',
+                  'block', 'price', 'contact', 'remarks')
+  search_fields = ('society','society_phase')
+  list_per_page = 25
 
 # @admin.register(Society_details_home_page)
 # class SocietyDetailsHomePageAdmin(admin.ModelAdmin):

@@ -169,7 +169,7 @@ class Socity_Sector(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "16. Society Sector"
+        verbose_name = "17. Society Sector"
 
 class Socity_phase_Sector(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE, default=None)
@@ -184,7 +184,7 @@ class Socity_phase_Sector(models.Model):
         return str(self.society) +' '+str(self.society_phase) + ' '+ str(self.society_sector)
 
     class Meta:
-        verbose_name = "17. Society Phase and Sector"
+        verbose_name = "18. Society Phase and Sector"
         unique_together = ('society', 'society_phase','society_sector')
 
 class Society_Phase_Youtube_videos(models.Model):
@@ -344,7 +344,7 @@ class Listing(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "18. Plot Listing"
+        verbose_name = "19. Plot Listing"
 
 class Plot_details_table(models.Model):
     society = models.ForeignKey(Society, on_delete=models.CASCADE)
@@ -386,7 +386,7 @@ class Plot_phase_details_table(models.Model):
         return str(self.society) +'Table' + str(self.society_phase)
 
     class Meta:
-        verbose_name = "17. Plot Detail Table Society Phase"
+        verbose_name = "15. Plot Detail Table Society Phase"
 
 class Society_details_home_page(models.Model):
     title = models.CharField(max_length=2000, blank=True)
@@ -460,7 +460,7 @@ class Society_phase_details_home_page(models.Model):
         return self.society.title
 
     class Meta:
-        verbose_name = "15. Society Phase Detail Home Page"
+        verbose_name = "16. Society Phase Detail Home Page"
         unique_together=('society','society_phase')
 
 
